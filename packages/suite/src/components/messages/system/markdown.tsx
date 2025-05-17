@@ -1,4 +1,4 @@
-import { TextMessageContent } from '@growly/core';
+import { TextMessageContent } from '@getgrowly/core';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';

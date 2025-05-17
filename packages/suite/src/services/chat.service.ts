@@ -1,5 +1,5 @@
 import { API_URL } from '@/constants';
-import { AgentId } from '@growly/core';
+import { AgentId } from '@getgrowly/core';
 import axios from 'axios';
 
 export class ChatService {

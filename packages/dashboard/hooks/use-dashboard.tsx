@@ -4,9 +4,9 @@ import {
   AggregatedOrganization,
   AggregatedWorkflow,
   WorkflowId,
-} from '@growly/core';
+} from '@getgrowly/core';
 import { create } from 'zustand';
-import { Admin } from '@growly/core';
+import { Admin } from '@getgrowly/core';
 
 export const STORAGE_KEY_SELECTED_ORGANIZATION_ID = (userId: string) =>
   `SUITE_SELECTED_ORGANIZATION_ID_${userId}`;

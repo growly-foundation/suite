@@ -4,7 +4,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { Loader2, Send } from 'lucide-react';
 import { useSuite } from '@/hooks/use-suite';
-import { LazyAnimatedBuster } from '@growly/ui';
+import { LazyAnimatedBuster } from '@getgrowly/ui';
 import { text, pressable } from '@/styles/theme';
 import { useSuiteSession } from '@/hooks/use-session';
 

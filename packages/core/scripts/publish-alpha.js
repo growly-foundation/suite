@@ -4,7 +4,7 @@ import path from 'path';
 import process from 'process';
 import { fileURLToPath } from 'url';
 
-const DIST_TAGS_URL = 'https://registry.npmjs.org/-/package/@growly/core/dist-tags';
+const DIST_TAGS_URL = 'https://registry.npmjs.org/-/package/@getgrowly/core/dist-tags';
 export const ALPHA_TAG = 'alpha';
 
 export async function main() {

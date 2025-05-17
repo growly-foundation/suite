@@ -9,7 +9,7 @@ import {
   MatchingIcon,
   TargetingIcon,
 } from '@/components/use-case-icons';
-import { GridBackground } from '@growly/ui';
+import { GridBackground } from '@getgrowly/ui';
 
 export default function UseCasesDefi() {
   const useCases = [

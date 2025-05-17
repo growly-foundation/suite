@@ -1,6 +1,6 @@
 {
-  "name": "@growly/website",
-  "version": "0.1.1",
+  "name": "@getgrowly/website",
+  "version": "0.1.4",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@emotion/is-prop-valid": "latest",
-    "@growly/suite": "workspace:*",
-    "@growly/ui": "workspace:*",
+    "@getgrowly/suite": "workspace:*",
+    "@getgrowly/ui": "workspace:*",
     "@hookform/resolvers": "^3.9.1",
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-alert-dialog": "1.1.4",

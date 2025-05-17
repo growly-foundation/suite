@@ -1,4 +1,4 @@
-import { createSuiteCore } from '@growly/core';
+import { createSuiteCore } from '@getgrowly/core';
 import { ENV_VARIABLES } from '@/constants/env';
 
 /**

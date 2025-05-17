@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Condition, ConditionType, ParsedStep, ScalarCondition, Step } from '@growly/core';
+import { Condition, ConditionType, ParsedStep, ScalarCondition, Step } from '@getgrowly/core';
 import { AlwaysCondition } from './always-condition-form';
 import { StepCondition } from './step-condition-form';
 import { WorkflowCondition } from './workflow-condition-form';

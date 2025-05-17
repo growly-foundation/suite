@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Send } from 'lucide-react';
-import { GrowlyButton } from '@growly/suite';
+import { GrowlyButton } from '@getgrowly/suite';
 
 export default function TypingPromptInput() {
   const prompts = [

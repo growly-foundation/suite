@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Plus } from 'lucide-react';
-import { Action } from '@growly/core';
+import { Action } from '@getgrowly/core';
 import { generateId } from '@/lib/utils';
 
 interface TextActionProps {

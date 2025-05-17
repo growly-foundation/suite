@@ -87,7 +87,7 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
       const finalTokenAmount = tokenAmount > 0 ? tokenAmount : 1.0;
 
       // Generate the Uniswap link with the token amount (not USD value)
-      const uniswapLink = `https://app.uniswap.org/swap?inputCurrency=${currencyFrom}&outputCurrency=${currencyTo}&exactAmount=${finalTokenAmount.toFixed(6)}&chain=${chain}`;
+      const uniswapLink = `https://app.uniswap.org/swap?inputCurrency=${currencyFrom}&outputCurrency=${currencyTo}&value=${finalTokenAmount.toFixed(6)}&chain=${chain}`;
 
       // Return updated recommendation
       return {

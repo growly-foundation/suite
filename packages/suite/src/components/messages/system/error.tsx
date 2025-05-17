@@ -1,4 +1,4 @@
-import { SystemErrorMessageContent } from '@growly/core';
+import { SystemErrorMessageContent } from '@getgrowly/core';
 import { AlertCircle } from 'lucide-react';
 
 export const buildSystemErrorMessage = (content: SystemErrorMessageContent['content']) => {

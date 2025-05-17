@@ -11,13 +11,13 @@ import TechStack from '@/components/tech-stack';
 import TypingPromptInput from '@/components/typing-prompt-input';
 import { Button } from '@/components/ui/button';
 import UseCasesDefi from '@/components/use-cases-defi';
-import { BusterState, GridBackground, FramerSpotlight } from '@growly/ui';
+import { BusterState, GridBackground, FramerSpotlight } from '@getgrowly/ui';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 
-const AnimatedBuster = dynamic(() => import('@growly/ui').then(suite => suite.AnimatedBuster), {
+const AnimatedBuster = dynamic(() => import('@getgrowly/ui').then(suite => suite.AnimatedBuster), {
   ssr: false,
 });
 

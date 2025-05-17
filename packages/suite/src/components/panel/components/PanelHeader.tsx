@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { cn, text } from '@/styles/theme';
-import { BRAND_NAME_CAPITALIZED } from '@growly/ui';
+import { BRAND_NAME_CAPITALIZED } from '@getgrowly/ui';
 import { X } from 'lucide-react';
 import { useSuiteSession } from '@/hooks/use-session';
 

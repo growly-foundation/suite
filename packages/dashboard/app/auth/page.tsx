@@ -1,6 +1,6 @@
 import { LoginForm } from '@/components/auth/login-form';
 import ProtectedAuthProvider from '@/components/providers/protected-auth-provider';
-import { GridBackground, FramerSpotlight } from '@growly/ui';
+import { GridBackground, FramerSpotlight } from '@getgrowly/ui';
 
 export default function LoginPage() {
   return (

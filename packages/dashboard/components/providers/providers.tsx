@@ -4,12 +4,12 @@ import { Suspense } from 'react';
 import { ThemeProvider } from '../theme-provider';
 import { PrivyProvider } from '@privy-io/react-auth';
 import { ToastContainer } from 'react-toastify';
-import '@growly/suite/styles.css';
+import '@getgrowly/suite/styles.css';
 import dynamic from 'next/dynamic';
 import { ReactFlowProvider } from 'reactflow';
 import { SuiteProviderWrapper } from './suite-provider';
 
-const ChatWidget = dynamic(() => import('@growly/suite').then(suite => suite.ChatWidget), {
+const ChatWidget = dynamic(() => import('@getgrowly/suite').then(suite => suite.ChatWidget), {
   ssr: false,
 });
 

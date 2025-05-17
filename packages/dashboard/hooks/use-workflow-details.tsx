@@ -5,7 +5,7 @@ import {
   Status,
   ParsedStep,
   StepId,
-} from '@growly/core';
+} from '@getgrowly/core';
 import { create } from 'zustand';
 
 export type WorkflowDetailStore = {

@@ -6,7 +6,7 @@ import { ArrowLeft, Code, Loader } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { AggregatedAgent, Status } from '@growly/core';
+import { AggregatedAgent, Status } from '@getgrowly/core';
 import { AgentForm } from '@/components/agents/agent-form';
 import { AgentWorkflows } from '@/components/agents/agent-workflows';
 import { AgentResources } from '@/components/agents/agent-resources';

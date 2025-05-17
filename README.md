@@ -18,14 +18,14 @@ Suite is an AI-powered engine designed to streamline DeFi adoption by integratin
 
 Built on Base, Suite leverages the power of AI to help users navigate on-chain actions, understand DeFi opportunities, and make informed decisions without requiring deep technical knowledge of blockchain.
 
-| Resource Name | Link  |  
-|---|---|
-| Website  | https://getgrowly.app  |   
-| Suite Dashboard  | https://suite.getgrowly.app  | 
-| Suite Playground  | https://playground.getgrowly.app  | 
-| Suite Uniswap Demo  | https://uniswap.getgrowly.app  | 
-| Original Idea Pitch  | [View the original idea](https://github.com/user-attachments/files/19884167/growly-widget-deck.2.pdf)  |   
-|  Pitch Deck for Base Batches | [View our pitch deck](https://www.figma.com/deck/uF0kJ0gn0ViJgPUUrdq1yn/-Growly-Suite--Pitch-Deck)  |    
+| Resource Name               | Link                                                                                                  |
+| --------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Website                     | https://getgrowly.app                                                                                 |
+| Suite Dashboard             | https://suite.getgrowly.app                                                                           |
+| Suite Playground            | https://playground.getgrowly.app                                                                      |
+| Suite Uniswap Demo          | https://uniswap.getgrowly.app                                                                         |
+| Original Idea Pitch         | [View the original idea](https://github.com/user-attachments/files/19884167/growly-widget-deck.2.pdf) |
+| Pitch Deck for Base Batches | [View our pitch deck](https://www.figma.com/deck/uF0kJ0gn0ViJgPUUrdq1yn/-Growly-Suite--Pitch-Deck)    |
 
 ## 🏗️ Project Architecture
 
@@ -35,12 +35,12 @@ Built on Base, Suite leverages the power of AI to help users navigate on-chain a
 
 Our project consists of several interconnected packages:
 
-- **@growly/core**: Core utilities and shared functionality
-- **@growly/ui**: Reusable UI components library
-- **@growly/suite**: The embeddable chat widget to be installed on dApp websites
-- **@growly/server**: Backend infrastructure that powers the AI agents and blockchain interactions
-- **@growly/website**: Landing page showcasing Suite's capabilities
-- **@growly/dashboard**: Admin dashboard for monitoring and managing Suite integrations
+- **@getgrowly/core**: Core utilities and shared functionality
+- **@getgrowly/ui**: Reusable UI components library
+- **@getgrowly/suite**: The embeddable chat widget to be installed on dApp websites
+- **@getgrowly/server**: Backend infrastructure that powers the AI agents and blockchain interactions
+- **@getgrowly/website**: Landing page showcasing Suite's capabilities
+- **@getgrowly/dashboard**: Admin dashboard for monitoring and managing Suite integrations
 
 **_Note: Genosis Safe integration will be in future development for batch onchain transactions!_**
 
@@ -68,7 +68,7 @@ Our project consists of several interconnected packages:
 
 ### Protocol's Production Interface
 
-- Install `@growly/suite` to your interface code (for example: [Uniswap/interface](https://github.com/Uniswap/interface)) and follow the guide
+- Install `@getgrowly/suite` to your interface code (for example: [Uniswap/interface](https://github.com/Uniswap/interface)) and follow the guide
 - Customers of DeFi protocols (such as Uniswap, Moonwell, Morpho,...) can now access to smart AI Agent that already know about their past on-chain activities, DeFi know-how, and portfolio
 - Using the `stepId`, the widget can trigger interactive engagement with customers. For example
 
@@ -135,12 +135,12 @@ pnpm dev:suite    # For widget development
 
 ## 📦 Package Structure
 
-- [**@growly/core**](https://www.npmjs.com/package/@getgrowly/core): Core utilities shared across the monorepo
-- [**@growly/ui**](https://www.npmjs.com/package/@getgrowly/ui): UI component library built with React and Tailwind
-- [**@growly/suite**](https://www.npmjs.com/package/@getgrowly/suite): The main widget package that dApp developers integrate
-- **@growly/server**: Backend service for AI processing and blockchain interactions
-- **@growly/website**: Marketing website and documentation
-- **@growly/dashboard**: Admin interface for managing integrations
+- [**@getgrowly/core**](https://www.npmjs.com/package/@getgrowly/core): Core utilities shared across the monorepo
+- [**@getgrowly/ui**](https://www.npmjs.com/package/@getgrowly/ui): UI component library built with React and Tailwind
+- [**@getgrowly/suite**](https://www.npmjs.com/package/@getgrowly/suite): The main widget package that dApp developers integrate
+- **@getgrowly/server**: Backend service for AI processing and blockchain interactions
+- **@getgrowly/website**: Marketing website and documentation
+- **@getgrowly/dashboard**: Admin interface for managing integrations
 
 ## 📚 Documentation
 

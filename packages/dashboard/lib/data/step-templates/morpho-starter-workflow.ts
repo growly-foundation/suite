@@ -1,4 +1,4 @@
-import { ParsedStep, ConditionType, Status } from '@growly/core';
+import { ParsedStep, ConditionType, Status } from '@getgrowly/core';
 import { v4 as uuid } from 'uuid';
 
 export const generateMorphoWorkflowSteps = (): ParsedStep[] => {

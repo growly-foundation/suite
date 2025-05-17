@@ -1,7 +1,7 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import OpenAI from 'openai';
 import { MessageInterface } from './message.interface';
-import { ConversationRole, FnReturnType, Message, SuiteDatabaseCore } from '@growly/core';
+import { ConversationRole, FnReturnType, Message, SuiteDatabaseCore } from '@getgrowly/core';
 
 @Injectable()
 export class MessageRepository implements MessageInterface {

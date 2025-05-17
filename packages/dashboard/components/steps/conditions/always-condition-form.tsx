@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { generateId } from '@/lib/utils';
-import { ConditionType, ScalarAlwaysCondition } from '@growly/core';
+import { ConditionType, ScalarAlwaysCondition } from '@getgrowly/core';
 import { Plus } from 'lucide-react';
 
 interface AlwaysConditionProps {

@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useDashboardState } from '@/hooks/use-dashboard';
 import { useEffect, useState } from 'react';
 import { suiteCore } from '@/core/suite';
-import { Status } from '@growly/core';
+import { Status } from '@getgrowly/core';
 import { NewWorkflowButton } from '@/components/buttons/new-workflow-button';
 import { NewAgentButton } from '@/components/buttons/new-agent-button';
 import moment from 'moment';

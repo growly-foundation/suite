@@ -7,11 +7,11 @@ import { Suspense } from 'react';
 export const DUMMY_AGENT_ID = 'cbbbc3d2-73fb-4e53-b35d-3c8a1d59adab';
 export const DUMMY_ORGANIZATION_API_KEY = '83f5dd65-da1e-4fcf-bc0f-4032778d03fb';
 
-const SuiteProvider = dynamic(() => import('@growly/suite').then(suite => suite.SuiteProvider), {
+const SuiteProvider = dynamic(() => import('@getgrowly/suite').then(suite => suite.SuiteProvider), {
   ssr: false,
 });
 
-const ChatWidget = dynamic(() => import('@growly/suite').then(suite => suite.ChatWidget), {
+const ChatWidget = dynamic(() => import('@getgrowly/suite').then(suite => suite.ChatWidget), {
   ssr: false,
 });
 

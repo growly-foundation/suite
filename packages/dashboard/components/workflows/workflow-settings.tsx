@@ -12,7 +12,7 @@ import { suiteCore } from '@/core/suite';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Status } from '@growly/core';
+import { Status } from '@getgrowly/core';
 import { useWorkflowDetailStore } from '@/hooks/use-workflow-details';
 
 export function WorkflowSettings() {

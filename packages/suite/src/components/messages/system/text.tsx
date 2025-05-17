@@ -1,4 +1,4 @@
-import { TextMessageContent } from '@growly/core';
+import { TextMessageContent } from '@getgrowly/core';
 
 export const buildTextMessage = (content: TextMessageContent['content']) => {
   return (

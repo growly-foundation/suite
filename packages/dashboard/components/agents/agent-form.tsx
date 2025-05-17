@@ -17,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { AggregatedAgent, Status, Workflow } from '@growly/core';
+import { AggregatedAgent, Status, Workflow } from '@getgrowly/core';
 import { toast } from 'react-toastify';
 import { useDashboardState } from '@/hooks/use-dashboard';
 

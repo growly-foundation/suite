@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { PublicDatabaseService, SuiteDatabaseCore } from '@growly/core';
+import { PublicDatabaseService, SuiteDatabaseCore } from '@getgrowly/core';
 
 @Injectable()
 export class SuiteCoreService {

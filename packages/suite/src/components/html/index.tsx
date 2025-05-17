@@ -1,4 +1,4 @@
-import { payload, UserDefinedStep } from '@growly/core';
+import { payload, UserDefinedStep } from '@getgrowly/core';
 
 /**
  * Growly step element that can be used to define a step.

@@ -1,5 +1,5 @@
 import { OnchainKitProviderReact } from '@coinbase/onchainkit';
-import { AgentId } from '@growly/core';
+import { AgentId } from '@getgrowly/core';
 
 /**
  * Configuration for the Growly Suite.

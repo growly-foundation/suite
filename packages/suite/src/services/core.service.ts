@@ -1,5 +1,5 @@
 import { API_URL } from '@/constants';
-import { PublicDatabaseService, SuiteDatabaseCore } from '@growly/core';
+import { PublicDatabaseService, SuiteDatabaseCore } from '@getgrowly/core';
 import axios from 'axios';
 
 export class CoreService {

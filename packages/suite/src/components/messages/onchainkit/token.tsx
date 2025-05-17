@@ -1,4 +1,4 @@
-import { OnchainKitTokenMessageContent } from '@growly/core';
+import { OnchainKitTokenMessageContent } from '@getgrowly/core';
 import { TokenChip } from '@coinbase/onchainkit/token';
 
 export const buildOnchainKitTokenChipMessage = ({

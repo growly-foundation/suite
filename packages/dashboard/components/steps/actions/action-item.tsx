@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { getActionLabel } from '@/lib/workflow.utils';
-import { Action } from '@growly/core';
+import { Action } from '@getgrowly/core';
 import { Trash } from 'lucide-react';
 
 interface ActionItemProps {

@@ -1,5 +1,5 @@
 {
-  "name": "@growly/server",
+  "name": "@getgrowly/server",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -23,7 +23,7 @@
     "@coinbase/agentkit": "^0.7.1",
     "@coinbase/agentkit-langchain": "^0.3.0",
     "@coinbase/x402": "^0.3.3",
-    "@growly/core": "workspace:*",
+    "@getgrowly/core": "workspace:*",
     "@langchain/anthropic": "^0.3.20",
     "@langchain/aws": "^0.1.9",
     "@langchain/core": "^0.3.51",

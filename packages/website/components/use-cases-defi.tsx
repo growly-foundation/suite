@@ -9,7 +9,7 @@ import {
   MatchingIcon,
   TargetingIcon,
 } from '@/components/use-case-icons';
-import { GridBackground } from '@growly/ui';
+import { GridBackground } from '@getgrowly/ui';
 
 export default function UseCasesDefi() {
   const useCases = [
@@ -74,8 +74,13 @@ export default function UseCasesDefi() {
 
   return (
     <section
+      id="use-cases"
       className="relative min-h-screen flex items-center justify-center overflow-hidden py-20"
       aria-labelledby="defi-use-cases-heading">
+      <img
+        src="/graphics/buster-mascot-3d-like.png"
+        className="absolute object-cover w-[200px] h-[200px] right-[50px] top-[50px] rotate-[-15deg] hover:rotate-[-20deg] transition-all duration-300 cursor-pointer max-sm:hidden md:block"
+      />
       <GridBackground />
       <div className="container px-4 md:px-6">
         <motion.div
@@ -98,7 +103,7 @@ export default function UseCasesDefi() {
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"

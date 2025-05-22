@@ -1,8 +1,8 @@
 import { useContext, useEffect } from 'react';
 import { base } from 'viem/chains';
 import { AppContext } from '../AppProvider';
-import { GrowlyComponent, Theme } from '@growly/suite';
-import { useSuite, SuiteProvider } from '@growly/suite';
+import { GrowlyComponent, Theme } from '@getgrowly/suite';
+import { useSuite, SuiteProvider } from '@getgrowly/suite';
 import { useAccount } from 'wagmi';
 import { DUMMY_AGENT_ID, DUMMY_ORGANIZATION_API_KEY } from '@/lib/constants';
 import { Button } from '../ui/button';

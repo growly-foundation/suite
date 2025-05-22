@@ -14,7 +14,7 @@ export default function Footer() {
               your app
             </p>
           </div>
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-sm font-bold">Product</h3>
             <nav aria-label="Product Navigation">
               <ul className="space-y-2 text-sm">
@@ -98,7 +98,7 @@ export default function Footer() {
                 </li>
               </ul>
             </nav>
-          </div>
+          </div> */}
         </div>
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">

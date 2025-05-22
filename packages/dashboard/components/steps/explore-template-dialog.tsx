@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from '../ui/dialog';
 import { Button } from '../ui/button';
-import { ParsedStep } from '@growly/core';
+import { ParsedStep } from '@getgrowly/core';
 import { generateBasicDeFiWorkflowSteps } from '@/lib/data/step-templates/basic-defi-workflow';
 import { generateGrowlySuiteWorkflowSteps } from '@/lib/data/step-templates/growly-support-workflow';
 import { generateUniswapWorkflowSteps } from '@/lib/data/step-templates/uniswap-starter-workflow';

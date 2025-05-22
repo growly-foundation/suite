@@ -10,7 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Copy } from 'lucide-react';
-import { AggregatedAgent, AggregatedWorkflow } from '@growly/core';
+import { AggregatedAgent, AggregatedWorkflow } from '@getgrowly/core';
 
 interface IntegrationGuideDialogProps {
   open: boolean;
@@ -24,7 +24,7 @@ export function IntegrationGuideDialog({ open, onOpenChange, agent }: Integratio
   };
 
   const providerCode = `
-import { SuiteProvider } from '@growly/suite';
+import { SuiteProvider } from '@getgrowly/suite';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -42,7 +42,7 @@ export default function App({ Component, pageProps }) {
   `.trim();
 
   const widgetCode = `
-import { ChatWidget } from '@growly/suite';
+import { ChatWidget } from '@getgrowly/suite';
 
 export default function IntegrationWidget() {
   return (
@@ -62,7 +62,7 @@ export default function IntegrationWidget() {
 </div>
   `.trim();
 
-  const npmInstallCode = `npm install @growly/suite`;
+  const npmInstallCode = `npm install @getgrowly/suite`;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -71,7 +71,7 @@ export default function IntegrationWidget() {
           <DialogTitle>Integration Guide</DialogTitle>
           <DialogDescription>
             Follow these steps to integrate this workflow into your application using the
-            @growly/suite package.
+            @getgrowly/suite package.
           </DialogDescription>
         </DialogHeader>
 

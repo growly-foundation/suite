@@ -1,4 +1,4 @@
-import { Agent, AggregatedWorkflow, Status } from '@growly/core';
+import { Agent, AggregatedWorkflow, Status } from '@getgrowly/core';
 import Link from 'next/link';
 import { Calendar, ChevronRight, Loader2, MoreHorizontal, Play, Square } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';

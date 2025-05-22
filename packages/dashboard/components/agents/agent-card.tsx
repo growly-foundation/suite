@@ -9,8 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { AggregatedAgent, Status } from '@growly/core';
-import { Agent } from '@growly/core';
+import { AggregatedAgent, Status } from '@getgrowly/core';
+import { Agent } from '@getgrowly/core';
 import { useEffect, useState } from 'react';
 import { suiteCore } from '@/core/suite';
 import { Skeleton } from '../ui/skeleton';

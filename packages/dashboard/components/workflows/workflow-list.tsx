@@ -1,7 +1,7 @@
 'use client';
 
 import { WorkflowCard } from './workflow-card';
-import type { AggregatedWorkflow } from '@growly/core';
+import type { AggregatedWorkflow } from '@getgrowly/core';
 
 export function WorkflowsList({ workflows }: { workflows: AggregatedWorkflow[] }) {
   return (

@@ -23,7 +23,7 @@ import {
   Status,
   WithId,
   WorkflowId,
-} from '@growly/core';
+} from '@getgrowly/core';
 import { Switch } from '../ui/switch';
 import { ZapIcon } from 'lucide-react';
 import { v4 as uuid } from 'uuid';

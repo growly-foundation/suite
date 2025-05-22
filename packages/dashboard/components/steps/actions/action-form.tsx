@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ActionItem } from './action-item';
 import { TextAction } from './text-action';
 import { AgentAction } from './agent-action';
-import { Action } from '@growly/core';
+import { Action } from '@getgrowly/core';
 
 interface ActionFormProps {
   actions: Action[];

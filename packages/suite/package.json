@@ -1,8 +1,8 @@
 {
-  "name": "@growly/suite",
-  "version": "0.1.0",
+  "name": "@getgrowly/suite",
+  "version": "1.0.5",
   "type": "module",
-  "repository": "https://github.com/growly-official/suite.git",
+  "repository": "https://github.com/growly-foundation/suite.git",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@coinbase/onchainkit": "^0.38.13",
-    "@growly/core": "workspace:*",
-    "@growly/ui": "workspace:*",
+    "@getgrowly/core": "workspace:*",
+    "@getgrowly/ui": "workspace:*",
     "@hookform/resolvers": "^5.0.1",
     "@lottiefiles/dotlottie-react": "^0.13.5",
     "@radix-ui/react-accordion": "^1.2.8",

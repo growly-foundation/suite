@@ -1,6 +1,6 @@
 // AppContext.js
 import { type ComponentMode, type ComponentTheme, SuiteComponent } from '@/types/suite';
-import { SuiteConfig } from '@growly/suite';
+import { SuiteConfig } from '@getgrowly/suite';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type React from 'react';

@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { getConditionDescription } from '@/lib/workflow.utils';
-import type { Action, ParsedStep, WorkflowId } from '@growly/core';
+import type { Action, ParsedStep, WorkflowId } from '@getgrowly/core';
 import { AddStepDialog } from './add-step-dialog';
 import { useWorkflowDetailStore } from '@/hooks/use-workflow-details';
 

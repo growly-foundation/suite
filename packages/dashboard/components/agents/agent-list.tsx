@@ -1,7 +1,7 @@
 'use client';
 
 import { AgentCard } from './agent-card';
-import { Agent } from '@growly/core';
+import { Agent } from '@getgrowly/core';
 
 export function AgentsList({ agents }: { agents: Agent[] }) {
   return (

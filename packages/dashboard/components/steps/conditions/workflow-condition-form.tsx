@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Plus } from 'lucide-react';
-import { ConditionType, ScalarWorkflowCondition, WorkflowId } from '@growly/core';
+import { ConditionType, ScalarWorkflowCondition, WorkflowId } from '@getgrowly/core';
 import { generateId } from '@/lib/utils';
 
 interface WorkflowConditionProps {

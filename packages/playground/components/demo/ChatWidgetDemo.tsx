@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic';
 import { ChatWidgetDemoLayout } from './ChatWidgetDemoLayout';
 
-const ChatWidget = dynamic(() => import('@growly/suite').then(suite => suite.ChatWidget), {
+const ChatWidget = dynamic(() => import('@getgrowly/suite').then(suite => suite.ChatWidget), {
   ssr: false,
 });
 

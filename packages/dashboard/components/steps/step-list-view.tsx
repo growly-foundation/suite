@@ -1,4 +1,4 @@
-import { ParsedStep } from '@growly/core';
+import { ParsedStep } from '@getgrowly/core';
 import { StepCard } from './step-card';
 import { AddStepDialog } from './add-step-dialog';
 import { useWorkflowDetailStore } from '@/hooks/use-workflow-details';

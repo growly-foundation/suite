@@ -6,15 +6,17 @@ import {
   SwapToast,
   SwapToggleButton,
 } from '@coinbase/onchainkit/swap';
-import { OnchainKitSwapMessageContent } from '@growly/core';
+import { OnchainKitSwapMessageContent } from '@getgrowly/core';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
-export const buildOnchainKitSwapMessage = ({
+const OnchainKitSwapMessage = ({
   fromToken,
   swappableTokens,
   toToken,
 }: OnchainKitSwapMessageContent['content']) => {
+  const { theme } = useTheme();
   return (
-    <div>
+    <div style={{ backgroundColor: theme.background.default, color: theme.text.primary }}>
       <Swap className="w-full" headerLeftContent={''} title={''}>
         <div data-growly-workflow=""></div>
         <SwapAmountInput
@@ -31,4 +33,8 @@ export const buildOnchainKitSwapMessage = ({
       </Swap>
     </div>
   );
+};
+
+export const buildOnchainKitSwapMessage = (content: OnchainKitSwapMessageContent['content']) => {
+  return <OnchainKitSwapMessage {...content} />;
 };

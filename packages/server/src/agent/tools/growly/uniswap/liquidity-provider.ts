@@ -14,6 +14,7 @@ import {
 } from './types';
 import { TokenListManager } from './token-list';
 import { PoolDataFetcher } from './pool-data-fetcher';
+import { updateSwapWithTokenAddresses } from './swap-utils';
 
 export function makeLiquidityProviderTool(configService: ConfigService) {
   const encodedKey = getEncodedKey(configService);
@@ -580,50 +581,11 @@ Output:
 
         // If the plan includes a swap recommendation, update that with addresses too
         if (liquidityPlan.swapRecommendation) {
-          // Use the token manager to get addresses and create a swap link
-          const { fromToken, toToken } = liquidityPlan.swapRecommendation;
-          const chain = fromToken.chain === toToken.chain ? fromToken.chain : 'ethereum';
-
-          // Get token addresses
-          let fromAddress = fromToken.address || '';
-          let toAddress = toToken.address || '';
-
-          if (!fromAddress) {
-            fromAddress = await tokenListManager.getTokenAddress(chain, fromToken.symbol);
-          }
-
-          if (!toAddress) {
-            toAddress = await tokenListManager.getTokenAddress(chain, toToken.symbol);
-          }
-
-          // Check if tokens are native
-          const isNativeFrom =
-            fromToken.symbol === 'ETH' &&
-            (chain === 'ethereum' ||
-              chain === 'optimism' ||
-              chain === 'arbitrum' ||
-              chain === 'base');
-          const isNativeTo =
-            toToken.symbol === 'ETH' &&
-            (chain === 'ethereum' ||
-              chain === 'optimism' ||
-              chain === 'arbitrum' ||
-              chain === 'base');
-          const isNativeMatic = fromToken.symbol === 'MATIC' && chain === 'polygon';
-          const isNativeMaticTo = toToken.symbol === 'MATIC' && chain === 'polygon';
-
-          // Format currency parameters
-          const currencyFrom = isNativeFrom || isNativeMatic ? 'NATIVE' : fromAddress;
-          const currencyTo = isNativeTo || isNativeMaticTo ? 'NATIVE' : toAddress;
-
-          // Use the actual token amount from the recommendation
-          const tokenAmount = liquidityPlan.swapRecommendation.tokenAmount || 0;
-
-          // Create swap link with token amount
-          const swapLink = `https://app.uniswap.org/swap?inputCurrency=${currencyFrom}&outputCurrency=${currencyTo}&value=${tokenAmount.toFixed(6)}&chain=${chain}`;
-
-          // Update the recommendation
-          liquidityPlan.swapRecommendation.uniswapLink = swapLink;
+          // Update the swap recommendation with token addresses
+          liquidityPlan.swapRecommendation = await updateSwapWithTokenAddresses(
+            liquidityPlan.swapRecommendation,
+            tokenListManager
+          );
         }
 
         // Format the response

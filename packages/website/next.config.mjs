@@ -1,6 +1,6 @@
 import withTM from 'next-transpile-modules';
 
-// const workspaceDependencies = ['@growly/ui', '@growly/suite'];
+// const workspaceDependencies = ['@getgrowly/ui', '@getgrowly/suite'];
 const workspaceDependencies = [];
 
 /** @type {import('next').NextConfig} */

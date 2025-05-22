@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { background, pressable, text } from '@/styles/theme';
-import { BRAND_NAME_CAPITALIZED, LazyAnimatedBuster } from '@growly/ui';
+import { BRAND_NAME_CAPITALIZED, LazyAnimatedBuster } from '@getgrowly/ui';
 import { useSuiteSession } from '@/hooks/use-session';
 
 export function FloatingButton(

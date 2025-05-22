@@ -7,8 +7,8 @@ import { AppInner } from './inner';
 
 // Load UI styles
 import './globals.css';
-import '@growly/ui/styles.css';
-import '@growly/suite/styles.css';
+import '@getgrowly/ui/styles.css';
+import '@getgrowly/suite/styles.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -91,7 +91,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           coinbaseFont.variable,
           geistSans.variable,
           geistMono.variable
-        )}>
+        )}
+        style={{
+          scrollBehavior: 'smooth',
+        }}>
         <AppInner>{children}</AppInner>
       </body>
     </html>

@@ -1,102 +1,92 @@
-# Uniswap Portfolio Analysis and Rebalance Tools
+# Growly Uniswap Tools
 
-This package provides specialized tools for analyzing crypto portfolios and suggesting optimized rebalancing strategies with Uniswap integration.
+This directory contains a collection of tools for interacting with Uniswap and providing crypto portfolio management functionality.
 
-## Tools
+## Tools Overview
 
-### 1. Portfolio Analyzer
+### 1. Portfolio Analyzer (`portfolio-analyzer.ts`)
 
-The `analyze_portfolio` tool provides in-depth analysis of a user's crypto portfolio with detailed reasoning and personalized recommendations:
+Analyzes a user's crypto portfolio and provides risk assessment and diversification recommendations.
 
-- Performs comprehensive portfolio risk assessment
-- Analyzes asset allocation and diversification
-- Identifies portfolio imbalances and concentration risks
-- Provides detailed explanations for recommended changes
-- Delivers customized insights based on the user's chosen strategy
-- Generates rebalancing suggestions with actual token amounts
-- Displays recommendations with USD values and percentages for context
+### 2. Portfolio Rebalancer (`rebalance.ts`)
 
-### 2. Portfolio Rebalancer
+Analyzes a user's portfolio and suggests how to rebalance it for better risk management or performance using Uniswap swaps.
 
-The `rebalance_portfolio_suggestion` tool provides actionable rebalance recommendations with pre-filled Uniswap links:
+### 3. Liquidity Provider (`liquidity-provider.ts`)
 
-- Analyzes portfolio holdings using data from Zerion API
-- Provides tailored recommendations based on different risk strategies
-- Calculates exact token amounts to swap based on USD values
-- Generates pre-filled Uniswap swap links with exact token quantities
-- Supports multiple chains including Ethereum, Polygon, Arbitrum, and Optimism
-- Dynamically fetches token addresses from standard token lists:
-  - Superchain token list: https://static.optimism.io/optimism.tokenlist.json
-  - Uses fallback addresses for common tokens if lists are unavailable
+Suggests optimal token pairs for providing liquidity on Uniswap based on a user's portfolio.
 
-### 3. Liquidity Provider
+### 4. Suggest Swap (`suggest-swap.ts`)
 
-The `provide_liquidity_suggestion` tool helps users earn passive income by providing liquidity to Uniswap pools:
+Generates a pre-filled Uniswap swap link for exchanging one token for another, without requiring portfolio analysis.
 
-- Analyzes portfolio to find optimal token pairs for liquidity provision
-- Recommends balanced liquidity positions tailored to user's risk preferences
-- Prioritizes popular trading pairs (ETH/stablecoin) and high-volume pools
-- Calculates exact token amounts needed for balanced 50/50 pools
-- Generates pre-filled Uniswap V4 position creation links
-- Provides comprehensive liquidity plans that may include initial rebalancing
-- Fetches real-time pool data using Uniswap V4 SDK and viem including:
-  - Actual pool APR based on fees and volume
-  - Current Total Value Locked (TVL)
-  - 24-hour trading volume
-  - Risk assessment based on real pool metrics
-- Falls back to estimated values when real-time data is unavailable
-- Offers complete step-by-step guidance for users new to providing liquidity
+## Utility Modules
+
+### Token List Manager (`token-list.ts`)
+
+Manages token lists from multiple sources (Superchain, Uniswap) and provides token address lookups.
+
+### Pool Data Fetcher (`pool-data-fetcher.ts`)
+
+Fetches Uniswap pool data for token pairs to provide APR and risk assessments.
+
+### Swap Utilities (`swap-utils.ts`)
+
+Shared utilities for generating swap recommendations and Uniswap links, used by multiple tools.
+
+## Using the Suggest Swap Tool
+
+The `suggest_swap` tool allows creating direct Uniswap swap links without requiring portfolio analysis. This is useful for:
+
+- Creating swap links for specific token pairs
+- Generating swap recommendations for tokens not in the user's portfolio
+- Quick access to Uniswap functionality without portfolio analysis
+
+### Example Usage
+
+```typescript
+const swapRecommendation = await suggestSwapTool.invoke({
+  fromToken: 'ETH',
+  toToken: 'USDC',
+  amount: 100, // USD value
+  chain: 'base',
+  reason: 'Converting ETH to stablecoins for reduced volatility',
+});
+```
+
+The tool will:
+
+1. Look up token addresses using the TokenListManager
+2. Generate a pre-filled Uniswap swap link with the correct parameters
+3. Return a formatted recommendation with the link
 
 ## Architecture
 
-The tools utilize several specialized components:
+The tools are designed with a modular architecture:
 
-### TokenListManager
+1. Each tool is implemented as a standalone module
+2. Common functionality is extracted to shared utility modules
+3. Token address resolution is centralized in the TokenListManager
+4. Swap link generation is centralized in swap-utils.ts
 
-- Fetches and caches token addresses from common token lists
-- Provides fallback addresses for popular tokens
-- Handles cross-chain token address resolution
+This design allows for:
 
-### PoolDataFetcher
+- Code reuse across tools
+- Consistent token address resolution
+- Unified swap link generation format
 
-- Interfaces with Uniswap V4 pools using the V4 SDK
-- Connects to multiple EVM chains using viem
-- Retrieves on-chain data for accurate pool metrics
-- Calculates APR, TVL, and volume from real pool data
-- Supports Ethereum, Optimism, Arbitrum, Base, and Polygon
+## Hardcoded Token Addresses
 
-## Usage Flow
+For reliability and consistency, certain token addresses are hardcoded:
 
-The tools can be used together for a complete DeFi strategy:
+- **USDC on Base**: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-1. First use the `analyze_portfolio` tool to provide a comprehensive assessment
-2. If rebalancing is needed, use the `rebalance_portfolio_suggestion` tool for optimal token allocation
-3. For users interested in passive income, use the `provide_liquidity_suggestion` tool to identify and set up optimal liquidity positions
+These hardcoded addresses take precedence over addresses from token lists and are implemented in:
 
-## Trigger Phrases
+- `swap-utils.ts` via the `HARDCODED_ADDRESSES` constant
+- `token-list.ts` in the `getTokenAddress` method
 
-### Portfolio Analyzer Triggers:
-
-- "Analyze my portfolio"
-- "What's my risk level?"
-- "Can you assess my crypto holdings?"
-
-### Portfolio Rebalancer Triggers:
-
-- "How should I rebalance my portfolio?"
-- "Suggest some trades to optimize my holdings"
-- "Help me diversify my crypto assets"
-
-### Liquidity Provider Triggers:
-
-- "How can I earn passive income with my crypto?"
-- "Suggest liquidity pairs for my portfolio"
-- "Help me provide liquidity on Uniswap"
-- "What's the best way to earn fees on my tokens?"
-
-## Sample Outputs
-
-### Portfolio Analyzer Output
+This ensures that critical tokens always use the correct contract address regardless of what's returned from token list sources.
 
 ```
 

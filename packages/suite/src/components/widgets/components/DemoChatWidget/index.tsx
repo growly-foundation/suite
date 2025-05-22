@@ -1,4 +1,4 @@
-import { ConversationRole, ParsedMessage } from '@growly/core';
+import { ConversationRole, ParsedMessage } from '@getgrowly/core';
 import { ChatWidgetContainer } from '../ChatWidget';
 import { ETHToken, USDCToken } from './tokens';
 import { useEffect } from 'react';

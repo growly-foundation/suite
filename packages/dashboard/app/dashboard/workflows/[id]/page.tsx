@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { WorkflowCanvas } from '@/components/workflows/workflow-canvas';
 import { WorkflowSettings } from '@/components/workflows/workflow-settings';
-import { ParsedStepInsert, Status, WithId } from '@growly/core';
+import { ParsedStepInsert, Status, WithId } from '@getgrowly/core';
 import { AddStepDialog } from '@/components/steps/add-step-dialog';
 import { useDashboardState } from '@/hooks/use-dashboard';
 import { suiteCore } from '@/core/suite';

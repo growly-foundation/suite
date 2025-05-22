@@ -17,10 +17,10 @@ COPY packages/server ./packages/server
 RUN pnpm install --frozen-lockfile
 
 # Build core package
-RUN pnpm --filter @growly/core build
+RUN pnpm --filter @getgrowly/core build
 
 # Build server package
-RUN pnpm --filter @growly/server build
+RUN pnpm --filter @getgrowly/server build
 
 # Production stage
 FROM node:20-alpine AS production

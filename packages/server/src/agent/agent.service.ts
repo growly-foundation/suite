@@ -1,5 +1,5 @@
 // import { ChatOpenAI } from '@langchain/openai';
-import { SuiteDatabaseCore } from '@growly/core';
+import { SuiteDatabaseCore } from '@getgrowly/core';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { agentPromptTemplate, beastModeDescription } from './prompt';

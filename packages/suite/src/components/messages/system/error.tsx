@@ -1,7 +1,11 @@
-import { SystemErrorMessageContent } from '@growly/core';
+import { SystemErrorMessageContent } from '@getgrowly/core';
 import { AlertCircle } from 'lucide-react';
 
-export const buildSystemErrorMessage = (content: SystemErrorMessageContent['content']) => {
+export const SystemErrorMessage = ({
+  content,
+}: {
+  content: SystemErrorMessageContent['content'];
+}) => {
   return (
     <p className="text-sm">
       <span className="text-red-500 flex items-center space-x-2">
@@ -10,4 +14,8 @@ export const buildSystemErrorMessage = (content: SystemErrorMessageContent['cont
       </span>
     </p>
   );
+};
+
+export const buildSystemErrorMessage = (content: SystemErrorMessageContent['content']) => {
+  return <SystemErrorMessage content={content} />;
 };

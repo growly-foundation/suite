@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Plus } from 'lucide-react';
 import { useDashboardState } from '@/hooks/use-dashboard';
 import { toast } from 'react-toastify';
-import { Action } from '@growly/core';
+import { Action } from '@getgrowly/core';
 import { buildTextAgentAction } from '@/lib/action.utils';
 
 interface AgentActionProps {

@@ -205,6 +205,11 @@ export class TokenListManager {
    * Get token address by chain and symbol
    */
   async getTokenAddress(chain: string, symbol: string): Promise<string> {
+    // Hardcoded check for USDC on Base
+    if (chain === 'base' && symbol === 'USDC') {
+      return '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913';
+    }
+
     const tokenMap = await this.fetchTokenLists();
 
     if (tokenMap[chain] && tokenMap[chain][symbol]) {

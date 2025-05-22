@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Plus } from 'lucide-react';
-import { ConditionType, ScalarStepCondition, StepId } from '@growly/core';
+import { ConditionType, ScalarStepCondition, StepId } from '@getgrowly/core';
 import { generateId } from '@/lib/utils';
 import { useWorkflowDetailStore } from '@/hooks/use-workflow-details';
 

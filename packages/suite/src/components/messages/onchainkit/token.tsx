@@ -1,12 +1,18 @@
-import { OnchainKitTokenMessageContent } from '@growly/core';
+import { OnchainKitTokenMessageContent } from '@getgrowly/core';
 import { TokenChip } from '@coinbase/onchainkit/token';
+import { useTheme } from '@/components/providers/ThemeProvider';
 
-export const buildOnchainKitTokenChipMessage = ({
-  token,
-}: OnchainKitTokenMessageContent['content']) => {
+export const OnchainKitTokenChipMessage = ({ token }: OnchainKitTokenMessageContent['content']) => {
+  const { theme } = useTheme();
   return (
-    <div>
-      <TokenChip className="bg-white shadow-none" isPressable={false} token={token} />
+    <div style={{ backgroundColor: theme.background.default }}>
+      <TokenChip className="shadow-none" isPressable={false} token={token} />
     </div>
   );
+};
+
+export const buildOnchainKitTokenChipMessage = (
+  content: OnchainKitTokenMessageContent['content']
+) => {
+  return <OnchainKitTokenChipMessage {...content} />;
 };

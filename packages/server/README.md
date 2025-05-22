@@ -127,7 +127,7 @@ With Mau, you can deploy your application in just a few clicks, allowing you to 
 
 ### Building the Docker Image
 
-The server package includes a Docker setup for building and deploying the server with its dependencies, including the `@growly/core` package.
+The server package includes a Docker setup for building and deploying the server with its dependencies, including the `@getgrowly/core` package.
 
 To build the Docker image:
 

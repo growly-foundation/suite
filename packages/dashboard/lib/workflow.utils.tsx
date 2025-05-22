@@ -6,7 +6,7 @@ import {
   UIEventCondition,
   type Condition,
   type ParsedStep,
-} from '@growly/core';
+} from '@getgrowly/core';
 import Dagre from '@dagrejs/dagre';
 import { BotIcon, FileTextIcon } from 'lucide-react';
 

@@ -1,10 +1,11 @@
 import { suiteCoreService } from '@/services/core.service';
-import { ConversationRole, MessageContent } from '@growly/core';
+import { ConversationRole, MessageContent } from '@getgrowly/core';
 import React from 'react';
 import { useSuiteSession } from './use-session';
 import { chatService } from '@/services/chat.service';
 import { toast } from 'sonner';
 import { useSuite } from './use-suite';
+import { Screen } from '@/types/screen';
 
 export const useChatActions = () => {
   const {
@@ -15,10 +16,17 @@ export const useChatActions = () => {
     inputValue,
     setInputValue,
     setPanelOpen,
+    setScreen,
   } = useSuiteSession();
   const { agentId } = useSuite();
   const [isSending, setIsSending] = React.useState(false);
 
+  /**
+   * Send a message to the remote database
+   * @param type The type of the message
+   * @param message The content of the message
+   * @param sender The sender of the message
+   */
   const sendRemoteMessage = async (
     type: MessageContent['type'],
     message: string,
@@ -52,6 +60,15 @@ export const useChatActions = () => {
     sendRemoteMessage('system:error', message, sender);
   };
 
+  const navigateChatScreen = () => {
+    setPanelOpen(true);
+    setScreen(Screen.Chat);
+  };
+
+  /**
+   * Send a message on behalf of the user.
+   * @param input The content of the message
+   */
   const sendUserMessage = async (input: string) => {
     if (isSending) return;
     if (!agentId || !user?.id) {
@@ -59,8 +76,8 @@ export const useChatActions = () => {
       return;
     }
     if (input.trim().length > 0) {
-      setIsAgentThinking(true);
-      setBusterState('writing');
+      navigateChatScreen();
+
       setIsSending(true);
       setInputValue('');
 
@@ -68,26 +85,35 @@ export const useChatActions = () => {
       await generateAgentMessage(input);
 
       setIsSending(false);
-      setBusterState('idle');
-      setIsAgentThinking(false);
-      setPanelOpen(true);
     }
   };
 
+  /**
+   * Send a message on behalf of the agent.
+   * @param input The content of the message
+   * @param isError Whether the message is an error message
+   */
   const textAgentMessage = async (input: string, isError?: boolean) => {
+    navigateChatScreen();
     if (isError) {
       sendErrorMessage(input, ConversationRole.Agent);
     } else {
       sendTextMessage(input, ConversationRole.Agent);
     }
-    setPanelOpen(true);
   };
 
+  /**
+   * Generate an agent message. This will send a message on behalf of the user and trigger the agent to respond.
+   * @param input The content of the message
+   */
   const generateAgentMessage = async (input: string) => {
     if (!agentId || !user?.id) {
       toast.error('Failed to send message');
       return;
     }
+    navigateChatScreen();
+    setIsAgentThinking(true);
+    setBusterState('writing');
     try {
       const newMessage = await chatService.chat({
         message: input,
@@ -100,9 +126,15 @@ export const useChatActions = () => {
     } catch (error: any) {
       toast.error(`Failed to send message: ${error}`);
       textAgentMessage(error.toSring(), true);
+    } finally {
+      setIsAgentThinking(false);
+      setBusterState('idle');
     }
   };
 
+  /**
+   * Send a message on behalf of the user.
+   */
   const sendMessage = () => {
     sendUserMessage(inputValue);
   };

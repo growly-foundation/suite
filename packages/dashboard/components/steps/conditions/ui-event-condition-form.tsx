@@ -9,7 +9,7 @@ import {
   ConditionType,
   ScalarUIEventCondition,
   UIEventCondition as UIEventConditionEnum,
-} from '@growly/core';
+} from '@getgrowly/core';
 import { generateId } from '@/lib/utils';
 
 interface UIEventConditionProps {

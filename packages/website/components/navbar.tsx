@@ -12,9 +12,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: 'Technologies', href: '#technologies' },
+    { label: 'Solutions', href: '#solutions' },
     { label: 'Features', href: '#features' },
-    { label: 'How to Get Started', href: '#getting-started' },
+    { label: 'Install', href: '#install' },
     { label: 'Use Cases', href: '#use-cases' },
     { label: 'About Us', href: 'https://growly.foundation' },
   ];
@@ -36,7 +36,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <nav className="hidden md:flex gap-6" aria-label="Main Navigation">
+        <nav className="max-sm:hidden md:flex gap-6" aria-label="Main Navigation">
           {navItems.map((item, index) => (
             <Link
               key={index}
@@ -48,11 +48,9 @@ export default function Navbar() {
         </nav>
 
         <div className="flex items-center gap-4">
-          <ThemeToggle />
-
           <Button
             asChild
-            className="hidden md:flex items-center gap-3 px-4 py-2 bg-primary hover:bg-accent text-white rounded-xl border-0 h-auto dark:bg-primary dark:hover:bg-primary/90 dark:shadow-[0_0_10px_rgba(36,101,237,0.4)]">
+            className="max-sm:hidden md:flex gap-3 px-4 py-2 bg-[#0052ff] hover:bg-[#3c79fd] text-white rounded-xl border-0 h-auto dark:bg-[#0052ff] dark:hover:bg-[#0052ff]/90 dark:shadow-[0_0_10px_rgba(36,101,237,0.4)]">
             <Link href="https://suite.getgrowly.app">
               <ArrowRight className="h-4 w-4 text-white" />
               <div className="flex flex-col items-start">
@@ -60,9 +58,8 @@ export default function Navbar() {
               </div>
             </Link>
           </Button>
-
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
+            <SheetTrigger asChild className="max-md:hidden">
               <Button variant="outline" size="icon" aria-label="Open Menu">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Toggle menu</span>
@@ -83,7 +80,7 @@ export default function Navbar() {
                   <ThemeToggle />
                   <Button
                     asChild
-                    className="w-full flex items-center gap-3 px-4 py-2 bg-primary hover:bg-secondary text-white rounded-xl border-0 h-auto dark:bg-primary dark:hover:bg-primary/90 dark:shadow-[0_0_10px_rgba(36,101,237,0.4)]">
+                    className="w-full flex items-center gap-3 px-4 py-2 bg-[#0052ff] hover:bg-[#3c79fd] text-white rounded-xl border-0 h-auto dark:bg-[#0052ff] dark:hover:bg-[#0052ff]/90 dark:shadow-[0_0_10px_rgba(36,101,237,0.4)]">
                     <Link href="https://suite.getgrowly.app" onClick={() => setIsOpen(false)}>
                       <ArrowRight className="h-4 w-4 text-white" />
                       <div className="flex flex-col items-start">

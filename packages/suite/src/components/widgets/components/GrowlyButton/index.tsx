@@ -7,17 +7,23 @@ export const GrowlyButton = ({
   children,
   onClick,
   triggerMessage,
+  withUserMessage,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
   triggerMessage: string;
+  withUserMessage?: boolean;
 }) => {
   const [loading, setLoading] = useState(false);
-  const { sendUserMessage } = useChatActions();
+  const { sendUserMessage, generateAgentMessage } = useChatActions();
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await sendUserMessage(triggerMessage);
+      if (withUserMessage) {
+        await sendUserMessage(triggerMessage);
+      } else {
+        await generateAgentMessage(triggerMessage);
+      }
       onClick?.(e);
     } catch (error) {
       console.error(error);

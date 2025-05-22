@@ -1,8 +1,8 @@
 {
-  "name": "@growly/ui",
+  "name": "@getgrowly/ui",
   "version": "1.0.0",
   "type": "module",
-  "repository": "https://github.com/growly-official/suite.git",
+  "repository": "https://github.com/growly-foundation/suite.git",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

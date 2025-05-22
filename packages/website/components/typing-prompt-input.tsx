@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Input } from '@/components/ui/input';
 import { Send } from 'lucide-react';
-import { GrowlyButton } from '@growly/suite';
+import { GrowlyComponent } from '@getgrowly/suite';
 
 export default function TypingPromptInput() {
   const prompts = [
@@ -83,14 +83,15 @@ export default function TypingPromptInput() {
             value={displayText}
             readOnly
           />
-          <GrowlyButton
+          <GrowlyComponent.Button
+            withUserMessage
             className="absolute right-2 top-1/2 transform -translate-y-1/2 h-10 w-10 
             bg-primary/90 hover:bg-primary backdrop-blur-md shadow-md"
             aria-label="Send message"
             triggerMessage={displayText}
             onClick={handleSend}>
             <Send className="h-5 w-5" />
-          </GrowlyButton>
+          </GrowlyComponent.Button>
         </div>
       </div>
     </div>

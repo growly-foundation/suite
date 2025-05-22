@@ -17,7 +17,7 @@ import {
 import { Label } from '@/components/ui/label';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Input } from '@/components/ui/input';
-import { AggregatedAgent, Workflow } from '@growly/core';
+import { AggregatedAgent, Workflow } from '@getgrowly/core';
 import { useDashboardState } from '@/hooks/use-dashboard';
 import { cn } from '@/lib/utils';
 import { toast } from 'react-toastify';

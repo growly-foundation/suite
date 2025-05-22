@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Plus } from 'lucide-react';
-import { ConditionType, ScalarJudgedByAgentCondition, ParsedStep } from '@growly/core';
+import { ConditionType, ScalarJudgedByAgentCondition, ParsedStep } from '@getgrowly/core';
 import { generateId } from '@/lib/utils';
 import { useWorkflowDetailStore } from '@/hooks/use-workflow-details';
 

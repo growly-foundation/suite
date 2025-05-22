@@ -6,7 +6,7 @@ import { useState, useEffect, Suspense } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Home, SquareStack } from 'lucide-react';
+import { Home } from 'lucide-react';
 import { UserButton } from '@/components/auth/user-button';
 import { OrganizationSwitcher } from '@/components/organizations/organization-switcher';
 import dynamic from 'next/dynamic';
@@ -125,7 +125,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <Link href="/dashboard" className="font-bold text-lg flex items-center">
-              <Image src="/logos/suite-logo-full.png" alt="Logo" width={35} height={35} />
+              <Image src="/logos/suite-icon.png" alt="Logo" width={35} height={35} />
             </Link>
             <OrganizationSwitcher />
             <div className="flex gap-3">

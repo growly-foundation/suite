@@ -1,4 +1,9 @@
-import { AggregatedWorkflow, ParsedStep, UIEventCondition, UserDefinedPayload } from '@growly/core';
+import {
+  AggregatedWorkflow,
+  ParsedStep,
+  UIEventCondition,
+  UserDefinedPayload,
+} from '@getgrowly/core';
 import { suiteCoreService } from '@/services/core.service';
 import { useSuiteSession } from '@/hooks/use-session';
 import { useEffect, useCallback, useState } from 'react';

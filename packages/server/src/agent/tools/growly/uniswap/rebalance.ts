@@ -8,6 +8,7 @@ import { ZERION_V1_BASE_URL } from '../../zerion/constants';
 import { getEncodedKey } from '../../zerion/zerion';
 import { TokenInfo, RebalanceRecommendation, RebalancingStrategy } from './types';
 import { TokenListManager } from './token-list';
+import { createSwapRecommendation, updateSwapWithTokenAddresses } from './swap-utils';
 
 export function makeRebalancePortfolioTool(configService: ConfigService) {
   const encodedKey = getEncodedKey(configService);
@@ -21,85 +22,6 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
 
   // Create token list manager
   const tokenListManager = new TokenListManager();
-
-  function createRecommendation(
-    fromToken: TokenInfo,
-    toToken: TokenInfo,
-    reason: string,
-    valueToSwap: number
-  ): RebalanceRecommendation {
-    // Generate Uniswap link
-    const chain = fromToken.chain === toToken.chain ? fromToken.chain : 'ethereum';
-
-    // We'll create a placeholder link and then update it asynchronously
-    const uniswapLink = `https://app.uniswap.org/swap?chain=${chain}`;
-
-    // Calculate token amount from USD value based on the token price
-    const tokenAmount = fromToken.price > 0 ? valueToSwap / fromToken.price : 0;
-
-    return {
-      fromToken,
-      toToken,
-      reason,
-      uniswapLink,
-      valueToSwap,
-      tokenAmount,
-    };
-  }
-
-  async function updateRecommendationWithTokenAddresses(
-    recommendation: RebalanceRecommendation
-  ): Promise<RebalanceRecommendation> {
-    const { fromToken, toToken, valueToSwap, tokenAmount = 0 } = recommendation;
-    const chain = fromToken.chain === toToken.chain ? fromToken.chain : 'ethereum';
-
-    try {
-      // Use token addresses from the tokens themselves if available
-      let fromAddress = fromToken.address || '';
-      let toAddress = toToken.address || '';
-
-      // If addresses are not available in the token info, look them up from token lists
-      if (!fromAddress) {
-        fromAddress = await tokenListManager.getTokenAddress(chain, fromToken.symbol);
-      }
-
-      if (!toAddress) {
-        toAddress = await tokenListManager.getTokenAddress(chain, toToken.symbol);
-      }
-
-      // Check if either token is the chain's native token (ETH)
-      const isNativeFrom =
-        fromToken.symbol === 'ETH' &&
-        (chain === 'ethereum' || chain === 'optimism' || chain === 'arbitrum' || chain === 'base');
-
-      const isNativeTo =
-        toToken.symbol === 'ETH' &&
-        (chain === 'ethereum' || chain === 'optimism' || chain === 'arbitrum' || chain === 'base');
-
-      const isNativeMatic = fromToken.symbol === 'MATIC' && chain === 'polygon';
-      const isNativeMaticTo = toToken.symbol === 'MATIC' && chain === 'polygon';
-
-      // Format currency parameters
-      const currencyFrom = isNativeFrom || isNativeMatic ? 'NATIVE' : fromAddress;
-      const currencyTo = isNativeTo || isNativeMaticTo ? 'NATIVE' : toAddress;
-
-      // Use the token amount that was already calculated in createRecommendation
-      const finalTokenAmount = tokenAmount > 0 ? tokenAmount : 1.0;
-
-      // Generate the Uniswap link with the token amount (not USD value)
-      const uniswapLink = `https://app.uniswap.org/swap?inputCurrency=${currencyFrom}&outputCurrency=${currencyTo}&exactAmount=${finalTokenAmount.toFixed(6)}&chain=${chain}`;
-
-      // Return updated recommendation
-      return {
-        ...recommendation,
-        uniswapLink,
-      };
-    } catch (error) {
-      console.error('Error updating recommendation with token addresses:', error);
-      // Return the original recommendation if lookup fails
-      return recommendation;
-    }
-  }
 
   function generateRebalanceRecommendation(
     tokens: TokenInfo[],
@@ -132,7 +54,7 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
           // Swap 30% of the high volatility token value
           const valueToSwap = fromToken.value * 0.3;
 
-          return createRecommendation(
+          return createSwapRecommendation(
             fromToken,
             toToken,
             'Reducing exposure to high volatility assets to preserve capital',
@@ -163,7 +85,7 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
           // Swap 40% of the stablecoin value
           const valueToSwap = fromToken.value * 0.4;
 
-          return createRecommendation(
+          return createSwapRecommendation(
             fromToken,
             toToken,
             'Increasing exposure to growth assets for higher potential returns',
@@ -193,7 +115,7 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
             // Swap 25% of the largest token value
             const valueToSwap = largestToken.value * 0.25;
 
-            return createRecommendation(
+            return createSwapRecommendation(
               largestToken,
               toToken,
               'Diversifying from an over-concentrated position to reduce risk',
@@ -206,30 +128,6 @@ export function makeRebalancePortfolioTool(configService: ConfigService) {
     }
 
     return null; // No recommendation for the given strategy
-  }
-
-  function formatRebalanceResponse(recommendation: RebalanceRecommendation): string {
-    const { fromToken, toToken, reason, uniswapLink, valueToSwap, tokenAmount } = recommendation;
-
-    return `
-## Portfolio Rebalance Recommendation
-
-I suggest swapping **${tokenAmount ? tokenAmount.toFixed(6) : '?'} ${fromToken.symbol}** (about $${valueToSwap.toFixed(2)}) to **${toToken.symbol}**.
-
-### Why make this swap?
-${reason}
-
-### Current allocation:
-- ${fromToken.symbol}: $${fromToken.value.toFixed(2)} (${fromToken.percentage.toFixed(2)}% of portfolio)
-- ${toToken.symbol}: $${toToken.value.toFixed(2)} (${toToken.percentage.toFixed(2)}% of portfolio)
-
-### After rebalancing (estimated):
-- ${fromToken.symbol}: $${(fromToken.value - valueToSwap).toFixed(2)}
-- ${toToken.symbol}: $${(toToken.value + valueToSwap).toFixed(2)}
-
-You can execute this swap on Uniswap:
-@${uniswapLink}
-`;
   }
 
   return new DynamicStructuredTool({
@@ -315,10 +213,34 @@ Output:
         }
 
         // Update the recommendation with token addresses from token lists
-        const updatedRecommendation = await updateRecommendationWithTokenAddresses(recommendation);
+        const updatedRecommendation = await updateSwapWithTokenAddresses(
+          recommendation,
+          tokenListManager
+        );
 
-        // Format the response
-        return formatRebalanceResponse(updatedRecommendation);
+        // Format the response with additional portfolio context
+        const { fromToken, toToken, reason, uniswapLink, valueToSwap, tokenAmount } =
+          updatedRecommendation;
+
+        return `
+## Portfolio Rebalance Recommendation
+
+I suggest swapping **${tokenAmount ? tokenAmount.toFixed(6) : '?'} ${fromToken.symbol}** (about $${valueToSwap.toFixed(2)}) to **${toToken.symbol}**.
+
+### Why make this swap?
+${reason}
+
+### Current allocation:
+- ${fromToken.symbol}: $${fromToken.value.toFixed(2)} (${fromToken.percentage.toFixed(2)}% of portfolio)
+- ${toToken.symbol}: $${toToken.value.toFixed(2)} (${toToken.percentage.toFixed(2)}% of portfolio)
+
+### After rebalancing (estimated):
+- ${fromToken.symbol}: $${(fromToken.value - valueToSwap).toFixed(2)}
+- ${toToken.symbol}: $${(toToken.value + valueToSwap).toFixed(2)}
+
+You can execute this swap on Uniswap:
+@${uniswapLink}
+`;
       } catch (error) {
         if (error instanceof Error) {
           return `Failed to generate rebalance suggestions: ${error.message}`;

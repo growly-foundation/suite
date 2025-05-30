@@ -1,8 +1,9 @@
+import { useWagmiConfig } from '@/hooks/use-wagmi';
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { WagmiProvider, useAccount } from 'wagmi';
-import { useWagmiConfig } from '@/hooks/use-wagmi';
 import { useContext, useEffect } from 'react';
+import { WagmiProvider, useAccount } from 'wagmi';
+
 import { SuiteContext } from './SuiteProvider';
 
 export const WalletConnectProvider = ({ children }: { children: React.ReactNode }) => {

@@ -1,18 +1,22 @@
+import { MobileNavigation } from '@/components/MobileNavigation';
+import { ChatPanel } from '@/components/chat/components/ChatPanel';
+import { HomePanel } from '@/components/home/HomePanel';
+import { SettingsPanel } from '@/components/settings/components/SettingsPanel';
 import { useSuiteSession } from '@/hooks/use-session';
 import { useSuite } from '@/hooks/use-suite';
-import { Screen } from '@/types/screen';
-import { MobileNavigation } from '@/components/MobileNavigation';
-import { SettingsPanel } from '@/components/settings/components/SettingsPanel';
-import { ChatPanel } from '@/components/chat/components/ChatPanel';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useThemeStyles } from '@/hooks/use-theme-styles';
 import { cn } from '@/lib/utils';
 import { border } from '@/styles/theme';
+import { Screen } from '@/types/screen';
+import { AnimatePresence, motion } from 'framer-motion';
+import React from 'react';
+
 import { PanelHeader } from './PanelHeader';
-import { monoTheme } from '@/components/widgets/theme';
 
 export function PanelContainer() {
   const { config } = useSuite();
   const { panelOpen, screen } = useSuiteSession();
+  const styles = useThemeStyles();
 
   return (
     <AnimatePresence>
@@ -23,25 +27,24 @@ export function PanelContainer() {
           exit={{ y: '100%', opacity: 0 }}
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           className={cn(
-            'fixed rounded-t-lg bottom-0 right-0 w-full max-w-[550px] sm:w-[550px] shadow-2xl z-[9999] flex flex-col overflow-hidden',
+            'fixed rounded-tl-2xl bottom-0 right-0 w-full max-w-[500px] sm:w-[500px] shadow-3xl z-[9999] flex flex-col overflow-hidden',
             border.default,
-            config?.display === 'fullView' ? 'h-[100vh]' : 'h-[650px]'
+            config?.display === 'fullView' ? 'h-[90vh]' : 'h-[90vh] md:h-[80vh]'
           )}
-          style={{
-            backgroundColor: config?.theme?.background || monoTheme?.background,
-          }}>
+          style={styles.panel.container}>
           {/* Header */}
-          <div
-            className={cn('p-4 shadow-md border-b', border.lineDefault)}
-            style={{
-              backgroundColor: config?.theme?.headerBackground || monoTheme?.headerBackground,
-              color: config?.theme?.headerText || monoTheme?.headerText,
-            }}>
+          <div className={'p-4 border-b'} style={styles.panel.header}>
             <PanelHeader />
           </div>
-          {screen === Screen.Chat && <ChatPanel />}
-          {screen === Screen.Settings && <SettingsPanel />}
-          <MobileNavigation />
+          {screen === Screen.Home ? (
+            <HomePanel />
+          ) : (
+            <React.Fragment>
+              {screen === Screen.Chat && <ChatPanel />}
+              {screen === Screen.Settings && <SettingsPanel />}
+              <MobileNavigation />
+            </React.Fragment>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

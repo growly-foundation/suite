@@ -9,7 +9,7 @@ To install the library in a monorepo, add the dependency to the sibling packages
 ```json
 {
   "dependencies": {
-    "@growly/core": "workspace:*"
+    "@getgrowly/core": "workspace:*"
   }
 }
 ```
@@ -21,7 +21,7 @@ And run `pnpm install` in the sibling packages.
 ### Interact with the services
 
 ```typescript
-import { createSuiteCore } from '@growly/core';
+import { createSuiteCore } from '@getgrowly/core';
 
 /**
  * SDK for interacting with the Growly Suite API.

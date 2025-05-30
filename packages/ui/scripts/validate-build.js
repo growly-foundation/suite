@@ -1,9 +1,9 @@
 // @ts-check
+import { spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import process from 'process';
-import { spawnSync } from 'child_process';
+import { fileURLToPath } from 'url';
 
 const TARBALL_CONTENTS_START_REGEX = new RegExp(`npm notice[\\s=]+Tarball Contents[\\s=]*`);
 const TARBALL_CONTENTS_END_REGEX = new RegExp(`npm notice[\\s=]+Tarball Details[\\s=]*`);

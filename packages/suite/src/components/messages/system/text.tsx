@@ -1,6 +1,6 @@
-import { TextMessageContent } from '@growly/core';
+import { TextMessageContent } from '@getgrowly/core';
 
-export const buildTextMessage = (content: TextMessageContent['content']) => {
+export const TextMessage = ({ content }: { content: TextMessageContent['content'] }) => {
   return (
     <p className="text-sm" style={{ margin: 0 }}>
       <span className="flex items-center space-x-2">
@@ -8,4 +8,8 @@ export const buildTextMessage = (content: TextMessageContent['content']) => {
       </span>
     </p>
   );
+};
+
+export const buildTextMessage = (content: TextMessageContent['content']) => {
+  return <TextMessage content={content} />;
 };

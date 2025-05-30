@@ -1,4 +1,5 @@
 import { Tables, TablesInsert } from '@/types/database.types';
+
 import { AgentId, StepId, WorkflowId } from './ids';
 
 export type Step = Tables<'steps'>;

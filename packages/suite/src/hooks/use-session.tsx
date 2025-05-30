@@ -1,18 +1,18 @@
 import { suiteCoreService } from '@/services/core.service';
+import { Screen } from '@/types/screen';
 import { create } from 'zustand';
+
 import {
   Agent,
   AgentId,
+  AggregatedWorkflow,
   MessageContent,
   ParsedMessage,
-  ParsedUser,
-  Action,
-  AggregatedWorkflow,
   ParsedStep,
-} from '@growly/core';
-import { BusterState } from '@growly/ui';
-import { Screen } from '@/types/screen';
-import { WorkflowExecutionService } from '@growly/core';
+  ParsedUser,
+} from '@getgrowly/core';
+import { WorkflowExecutionService } from '@getgrowly/core';
+import { BusterState } from '@getgrowly/ui';
 
 type Optional<T> = T | undefined | null;
 
@@ -46,6 +46,9 @@ interface WidgetSession {
   fetchOrganizationAgentById: (agentId: AgentId, apiKey: string) => Promise<Optional<Agent>>;
 }
 
+/**
+ * Access to the current session data of the widget. For example, current user, agent, workflows...
+ */
 export const useSuiteSession = create<WidgetSession>((set, get) => ({
   busterState: 'idle',
   workflowExecutionService: null,
@@ -61,7 +64,7 @@ export const useSuiteSession = create<WidgetSession>((set, get) => ({
   panelOpen: false,
   togglePanel: () => set({ panelOpen: !get().panelOpen }),
   setPanelOpen: open => set({ panelOpen: open }),
-  screen: Screen.Chat,
+  screen: Screen.Home,
   setScreen: screen => set({ screen }),
   user: undefined,
   inputValue: '',

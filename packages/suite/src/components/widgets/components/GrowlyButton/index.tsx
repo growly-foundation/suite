@@ -1,23 +1,29 @@
 import { Button } from '@/components/ui/button';
 import { useChatActions } from '@/hooks/use-chat-actions';
-import { useState } from 'react';
 import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 export const GrowlyButton = ({
   children,
   onClick,
   triggerMessage,
+  withUserMessage,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & {
   triggerMessage: string;
+  withUserMessage?: boolean;
 }) => {
   const [loading, setLoading] = useState(false);
-  const { sendUserMessage } = useChatActions();
+  const { sendUserMessage, generateAgentMessage } = useChatActions();
   const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await sendUserMessage(triggerMessage);
+      if (withUserMessage) {
+        await sendUserMessage(triggerMessage);
+      } else {
+        await generateAgentMessage(triggerMessage);
+      }
       onClick?.(e);
     } catch (error) {
       console.error(error);

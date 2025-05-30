@@ -1,5 +1,7 @@
 packages:
   - packages/*
+  - apps/*
+  - libs/*
 onlyBuiltDependencies:
   - sharp
   - supabase

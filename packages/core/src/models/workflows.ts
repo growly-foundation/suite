@@ -1,5 +1,6 @@
-import { StepId, WorkflowId } from './ids';
 import { Tables, TablesInsert } from '@/types/database.types';
+
+import { StepId, WorkflowId } from './ids';
 import { Condition, ParsedStep, ParsedStepInsert } from './steps';
 
 export type Workflow = Tables<'workflows'>;

@@ -1,11 +1,11 @@
 import { execSync } from 'child_process';
-import process from 'process';
 import fs from 'fs';
 import path from 'path';
+import process from 'process';
 import { fileURLToPath } from 'url';
 import { stripVTControlCharacters } from 'util';
 
-const packageName = '@growly/core';
+const packageName = '@getgrowly/core';
 const widgetsPath = 'packages/widgets';
 
 function getNextVersion() {

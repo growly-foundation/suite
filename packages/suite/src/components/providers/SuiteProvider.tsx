@@ -1,15 +1,19 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { ThemeName } from '@/types/theme';
 import { OnchainKitProvider } from '@coinbase/onchainkit';
+import React, { useEffect, useState } from 'react';
+
 import { useSuiteSession } from '../../hooks/use-session';
-import { Loader2 } from 'lucide-react';
-import { WalletConnectProvider } from './WalletConnectProvider';
+import { TooltipProvider } from '../ui/tooltip';
 import { SuiteConfig, SuiteGlobalContext } from './SuiteProvider.types';
-import { Theme } from '../widgets';
+import { ThemeProvider } from './ThemeProvider';
+import { WalletConnectProvider } from './WalletConnectProvider';
 import { WorkflowExecutionObserver } from './WorkflowExecutionObserver';
 
 const defaultConfig: SuiteConfig = {
   display: 'fullView',
-  theme: Theme.monoTheme,
+  themeMode: ThemeName.Light,
+  theme: {}, // Theme overrides will be handled by ThemeProvider
+  brandName: 'Cream',
 };
 
 export const SuiteContext = React.createContext<
@@ -36,7 +40,7 @@ export const SuiteProvider: React.FC<{
   children: React.ReactNode;
   context: SuiteGlobalContext;
 }> = ({ children, context }) => {
-  const [baseComponent, setBaseComponent] = useState<React.ReactNode>(<></>);
+  const [baseComponent, setBaseComponent] = useState<React.ReactNode>(<>{children}</>);
   const [isInitialized, setIsInitialized] = useState(false);
   const { createUserFromAddressIfNotExist, fetchOrganizationAgentById } = useSuiteSession();
   const [config, setConfig] = useState<SuiteConfig>(context.config ?? defaultConfig);
@@ -67,10 +71,7 @@ export const SuiteProvider: React.FC<{
   }, [context, walletAddress]);
 
   useEffect(() => {
-    let baseComponent = (
-      <>{isInitialized ? children : <Loader2 className="h-5 w-5 animate-spin" />}</>
-    );
-
+    let baseComponent = children;
     if (!walletAddress && !context.session?.connect) {
       console.log('Growly Suite: Wallet is not connected');
     }
@@ -104,7 +105,13 @@ export const SuiteProvider: React.FC<{
           setWalletAddress,
         },
       }}>
-      <WorkflowExecutionObserver>{baseComponent}</WorkflowExecutionObserver>
+      <ThemeProvider
+        defaultTheme={config.themeMode || ThemeName.Light}
+        themeOverrides={config.theme}>
+        <WorkflowExecutionObserver>
+          <TooltipProvider>{baseComponent}</TooltipProvider>
+        </WorkflowExecutionObserver>
+      </ThemeProvider>
     </SuiteContext.Provider>
   );
 };

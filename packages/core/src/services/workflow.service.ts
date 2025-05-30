@@ -1,7 +1,8 @@
-import { AggregatedWorkflow } from '@/models/workflows';
-import { Condition, Action, Step, ParsedStep } from '@/models/steps';
-import { PublicDatabaseService } from './database.service';
 import { AgentId, OrganizationId, WorkflowId } from '@/models';
+import { Action, Condition, ParsedStep, Step } from '@/models/steps';
+import { AggregatedWorkflow } from '@/models/workflows';
+
+import { PublicDatabaseService } from './database.service';
 
 export class WorkflowService {
   constructor(

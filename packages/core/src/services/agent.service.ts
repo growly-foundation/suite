@@ -1,6 +1,7 @@
+import { AggregatedAgent, AggregatedWorkflow, Status } from '@/models';
+
 import { PublicDatabaseService } from './database.service';
 import { WorkflowService } from './workflow.service';
-import { AggregatedAgent, AggregatedWorkflow, Status } from '@/models';
 
 export class AgentService {
   constructor(

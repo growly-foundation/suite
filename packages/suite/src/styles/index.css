@@ -1,183 +1,245 @@
-/* Font */
-.gas-font-family {
-  font-family: var(--gas-font-family);
+.growly-suite {
+  /* Growly Suite Styles - Scoped to prevent global conflicts */
+  /* Font */
+  .gas-font-family {
+    font-family: var(--gas-font-family);
+  }
+
+  /* Border */
+  .gas-border-default {
+    border-color: var(--gas-bg-default);
+  }
+
+  .gas-border-default-active {
+    border-color: var(--gas-bg-default-active);
+  }
+
+  .gas-border-line-primary {
+    border-color: var(--gas-line-primary);
+  }
+
+  .gas-border-line-default {
+    border-color: var(--gas-line-default);
+  }
+
+  .gas-border-line-heavy {
+    border-color: var(--gas-line-heavy);
+  }
+
+  .gas-border-line-inverse {
+    border-color: var(--gas-line-inverse);
+  }
+
+  .gas-border-radius {
+    border-radius: var(--gas-border-radius);
+  }
+
+  .gas-border-radius-inner {
+    border-radius: var(--gas-border-radius-inner);
+  }
+
+  /* Fill */
+  .gas-fill-default {
+    fill: var(--gas-bg-default);
+  }
+
+  .gas-fill-default-reverse {
+    fill: var(--gas-bg-default-reverse);
+  }
+
+  .gas-fill-alternate {
+    fill: var(--gas-bg-alternate);
+  }
+
+  /* Icon */
+  .gas-icon-color-primary {
+    fill: var(--gas-icon-color-primary);
+  }
+  
+  .gas-icon-color-foreground {
+    fill: var(--gas-icon-color-foreground);
+  }
+  
+  .gas-icon-color-foreground-muted {
+    fill: var(--gas-icon-color-foreground-muted);
+  }
+  
+  .gas-icon-color-inverse {
+    fill: var(--gas-icon-color-inverse);
+  }
+  
+  .gas-icon-color-error {
+    fill: var(--gas-icon-color-error);
+  }
+  
+  .gas-icon-color-success {
+    fill: var(--gas-icon-color-success);
+  }
+  
+  .gas-icon-color-warning {
+    fill: var(--gas-icon-color-warning);
+  }
+
+  /* Placeholder */
+  .placeholder-gas-default::placeholder {
+    color: var(--gas-text-foreground-muted);
+  }
+
+  /* Scrollbar */
+  .gas-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #ffffff;
+  }
+
+  /* Shadow */
+  .gas-shadow-default {
+    box-shadow: 0px 8px 12px 0px #5b616e1f;
+  }
+
+  &.dark .gas-shadow-default {
+    box-shadow: 0px 8px 12px 0px #5b616e1f;
+  }
+
+  /* Text */
+  .gas-text-inverse {
+    color: var(--gas-text-inverse);
+  }
+  
+  .gas-text-foreground {
+    color: var(--gas-text-foreground);
+  }
+  
+  .gas-text-foreground-muted {
+    color: var(--gas-text-foreground-muted);
+  }
+  
+  .gas-text-error {
+    color: var(--gas-text-error);
+  }
+  
+  .gas-text-primary {
+    color: var(--gas-text-primary);
+  }
+  
+  .gas-text-success {
+    color: var(--gas-text-success);
+  }
+  
+  .gas-text-warning {
+    color: var(--gas-text-warning);
+  }
+  
+  .gas-text-disabled {
+    color: var(--gas-text-disabled);
+  }
+
+  /* Background */
+  .gas-bg-default {
+    background-color: var(--gas-bg-default);
+  }
+  
+  .gas-bg-default-hover {
+    background-color: var(--gas-bg-default-hover);
+  }
+  
+  .gas-bg-default-active {
+    background-color: var(--gas-bg-default-active);
+  }
+  
+  .gas-bg-alternate {
+    background-color: var(--gas-bg-alternate);
+  }
+  
+  .gas-bg-alternate-hover {
+    background-color: var(--gas-bg-alternate-hover);
+  }
+  
+  .gas-bg-alternate-active {
+    background-color: var(--gas-bg-alternate-active);
+  }
+  
+  .gas-bg-inverse {
+    background-color: var(--gas-bg-inverse);
+  }
+  
+  .gas-bg-inverse-hover {
+    background-color: var(--gas-bg-inverse-hover);
+  }
+  
+  .gas-bg-inverse-active {
+    background-color: var(--gas-bg-inverse-active);
+  }
+  
+  .gas-bg-primary {
+    background-color: var(--gas-bg-primary);
+  }
+  
+  .gas-bg-primary-hover {
+    background-color: var(--gas-bg-primary-hover);
+  }
+  
+  .gas-bg-primary-active {
+    background-color: var(--gas-bg-primary-active);
+  }
+  
+  .gas-bg-secondary {
+    background-color: var(--gas-bg-secondary);
+  }
+  
+  .gas-bg-secondary-hover {
+    background-color: var(--gas-bg-secondary-hover);
+  }
+  
+  .gas-bg-secondary-active {
+    background-color: var(--gas-bg-secondary-active);
+  }
+  
+  .gas-bg-error {
+    background-color: var(--gas-bg-error);
+  }
+  
+  .gas-bg-warning {
+    background-color: var(--gas-bg-warning);
+  }
+  
+  .gas-bg-success {
+    background-color: var(--gas-bg-success);
+  }
+  
+  .gas-bg-default-reverse {
+    background-color: var(--gas-bg-default-reverse);
+  }
+  
+  .gas-bg-primary-washed {
+    background-color: var(--gas-bg-primary-washed);
+  }
+  
+  .gas-bg-primary-disabled {
+    background-color: var(--gas-bg-primary-disabled);
+  }
+  
+  /* Reset some common elements that might affect global styles */
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
 }
 
-/* Border */
-.gas-border-default {
-  border-color: var(--gas-bg-default);
-}
-
-.gas-border-default-active {
-  border-color: var(--gas-bg-default-active);
-}
-
-.gas-border-line-primary {
-  border-color: var(--gas-line-primary);
-}
-
-.gas-border-line-default {
-  border-color: var(--gas-line-default);
-}
-
-.gas-border-line-heavy {
-  border-color: var(--gas-line-heavy);
-}
-
-.gas-border-line-inverse {
-  border-color: var(--gas-line-inverse);
-}
-
-.gas-border-radius {
-  border-radius: var(--gas-border-radius);
-}
-
-.gas-border-radius-inner {
-  border-radius: var(--gas-border-radius-inner);
-}
-
-/* Fill */
-.gas-fill-default {
-  fill: var(--gas-bg-default);
-}
-
-.gas-fill-default-reverse {
-  fill: var(--gas-bg-default-reverse);
-}
-
-.gas-fill-alternate {
-  fill: var(--gas-bg-alternate);
-}
-
-/* Icon */
-.gas-icon-color-primary {
-  fill: var(--gas-icon-color-primary);
-}
-.gas-icon-color-foreground {
-  fill: var(--gas-icon-color-foreground);
-}
-.gas-icon-color-foreground-muted {
-  fill: var(--gas-icon-color-foreground-muted);
-}
-.gas-icon-color-inverse {
-  fill: var(--gas-icon-color-inverse);
-}
-.gas-icon-color-error {
-  fill: var(--gas-icon-color-error);
-}
-.gas-icon-color-success {
-  fill: var(--gas-icon-color-success);
-}
-.gas-icon-color-warning {
-  fill: var(--gas-icon-color-warning);
-}
-
-/* Placeholder */
-.placeholder-gas-default::placeholder {
-  color: var(--gas-text-foreground-muted);
-}
-
-/* Scrollbar */
-.gas-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #d1d5db #ffffff;
-}
-
-/* Shadow */
-.gas-shadow-default {
-  box-shadow: 0px 8px 12px 0px #5b616e1f;
-}
-
-.dark .gas-shadow-default {
-  box-shadow: 0px 8px 12px 0px #5b616e1f;
-}
-
-/* Text */
-.gas-text-inverse {
-  color: var(--gas-text-inverse);
-}
-.gas-text-foreground {
-  color: var(--gas-text-foreground);
-}
-.gas-text-foreground-muted {
-  color: var(--gas-text-foreground-muted);
-}
-.gas-text-error {
-  color: var(--gas-text-error);
-}
-.gas-text-primary {
-  color: var(--gas-text-primary);
-}
-.gas-text-success {
-  color: var(--gas-text-success);
-}
-.gas-text-warning {
-  color: var(--gas-text-warning);
-}
-.gas-text-disabled {
-  color: var(--gas-text-disabled);
-}
-/* Background */
-.gas-bg-default {
-  background-color: var(--gas-bg-default);
-}
-.gas-bg-default-hover {
-  background-color: var(--gas-bg-default-hover);
-}
-.gas-bg-default-active {
-  background-color: var(--gas-bg-default-active);
-}
-.gas-bg-alternate {
-  background-color: var(--gas-bg-alternate);
-}
-.gas-bg-alternate-hover {
-  background-color: var(--gas-bg-alternate-hover);
-}
-.gas-bg-alternate-active {
-  background-color: var(--gas-bg-alternate-active);
-}
-.gas-bg-inverse {
-  background-color: var(--gas-bg-inverse);
-}
-.gas-bg-inverse-hover {
-  background-color: var(--gas-bg-inverse-hover);
-}
-.gas-bg-inverse-active {
-  background-color: var(--gas-bg-inverse-active);
-}
-.gas-bg-primary {
-  background-color: var(--gas-bg-primary);
-}
-.gas-bg-primary-hover {
-  background-color: var(--gas-bg-primary-hover);
-}
-.gas-bg-primary-active {
-  background-color: var(--gas-bg-primary-active);
-}
-.gas-bg-secondary {
-  background-color: var(--gas-bg-secondary);
-}
-.gas-bg-secondary-hover {
-  background-color: var(--gas-bg-secondary-hover);
-}
-.gas-bg-secondary-active {
-  background-color: var(--gas-bg-secondary-active);
-}
-.gas-bg-error {
-  background-color: var(--gas-bg-error);
-}
-.gas-bg-warning {
-  background-color: var(--gas-bg-warning);
-}
-.gas-bg-success {
-  background-color: var(--gas-bg-success);
-}
-.gas-bg-default-reverse {
-  background-color: var(--gas-bg-default-reverse);
-}
-.gas-bg-primary-washed {
-  background-color: var(--gas-bg-primary-washed);
-}
-.gas-bg-primary-disabled {
-  background-color: var(--gas-bg-primary-disabled);
+/* Global styles that need to be applied to the root element */
+:root {
+  /* Ensure smooth scrolling for the whole app */
+  scroll-behavior: smooth;
+  
+  /* Set base font size for rem units */
+  font-size: 16px;
+  
+  /* Set default text rendering */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

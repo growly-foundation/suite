@@ -1,9 +1,9 @@
 @tailwind base;
 
 @layer base {
-  :root,
-  .light,
-  .default-light {
+  .growly-ui,
+  .growly-ui .light,
+  .growly-ui .default-light {
     --gas-font-family: 'DM Sans', sans-serif;
     --gas-border-default: theme(colors.gray.400);
     --gas-border-radius: 0.5rem;
@@ -304,7 +304,7 @@
     --gas-line-heavy: theme(colors.zinc.500);
     --gas-line-inverse: theme(colors.zinc.700);
   }
-  :root {
+  .growly-ui {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;

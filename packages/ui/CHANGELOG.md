@@ -1,4 +1,4 @@
-# @growly/ui
+# @getgrowly/ui
 
 ## 1.0.0
 

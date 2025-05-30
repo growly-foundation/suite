@@ -1,8 +1,10 @@
-import { ConversationRole, ParsedMessage } from '@growly/core';
+import { useSuiteSession } from '@/hooks/use-session';
+import { useEffect } from 'react';
+
+import { ConversationRole, ParsedMessage } from '@getgrowly/core';
+
 import { ChatWidgetContainer } from '../ChatWidget';
 import { ETHToken, USDCToken } from './tokens';
-import { useEffect } from 'react';
-import { useSuiteSession } from '@/hooks/use-session';
 
 const mockMessages: ParsedMessage[] = [
   {

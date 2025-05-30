@@ -1,7 +1,8 @@
-import { FloatingButton } from './FloatingButton';
-import { useSuiteSession } from '@/hooks/use-session';
 import { PanelContainer } from '@/components/panel/components/PanelContainer';
+import { useSuiteSession } from '@/hooks/use-session';
 import { useEffect } from 'react';
+
+import { FloatingButton } from './FloatingButton';
 
 function ChatWidgetContainer({
   buttonProps,

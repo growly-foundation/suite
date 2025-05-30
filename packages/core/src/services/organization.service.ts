@@ -1,7 +1,8 @@
 import { AggregatedOrganization } from '@/models/organizations';
+
 import { PublicDatabaseService } from './database.service';
-import { WorkflowService } from './workflow.service';
 import { FunctionService } from './function.service';
+import { WorkflowService } from './workflow.service';
 
 export class OrganizationService {
   constructor(

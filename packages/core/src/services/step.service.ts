@@ -1,5 +1,6 @@
-import { PublicDatabaseService } from './database.service';
 import { AggregatedWorkflow, WorkflowId } from '@/models';
+
+import { PublicDatabaseService } from './database.service';
 
 export class StepService {
   constructor(private stepDatabaseService: PublicDatabaseService<'steps'>) {}

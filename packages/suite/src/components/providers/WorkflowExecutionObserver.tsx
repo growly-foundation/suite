@@ -1,9 +1,15 @@
-import { AggregatedWorkflow, ParsedStep, UIEventCondition, UserDefinedPayload } from '@growly/core';
-import { suiteCoreService } from '@/services/core.service';
-import { useSuiteSession } from '@/hooks/use-session';
-import { useEffect, useCallback, useState } from 'react';
-import { useSuite } from '@/hooks/use-suite';
 import { useChatActions } from '@/hooks/use-chat-actions';
+import { useSuiteSession } from '@/hooks/use-session';
+import { useSuite } from '@/hooks/use-suite';
+import { suiteCoreService } from '@/services/core.service';
+import { useCallback, useEffect, useState } from 'react';
+
+import {
+  AggregatedWorkflow,
+  ParsedStep,
+  UIEventCondition,
+  UserDefinedPayload,
+} from '@getgrowly/core';
 
 let executing = false;
 
@@ -40,7 +46,10 @@ export const WorkflowExecutionObserver: React.FC<{ children: React.ReactNode }> 
       for (const action of step.action) {
         if (action.type === 'text') {
           console.log(`TextAction: ${action.return.text}`);
-          await textAgentMessage(action.return.text);
+          await textAgentMessage({
+            agent: action.return.text,
+            tools: [],
+          });
         } else if (action.type === 'agent') {
           console.log(`AgentAction prompt: ${action.args.prompt}`);
           await generateAgentMessage(action.args.prompt);

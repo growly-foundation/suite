@@ -1,7 +1,7 @@
-import { Condition, Action, ConditionType, ParsedStep } from '@/models/steps';
-import { UIEventCondition } from '@/models/steps';
-import { StepId, WorkflowId } from '@/models/ids';
 import { AggregatedWorkflow, Status } from '@/models';
+import { StepId, WorkflowId } from '@/models/ids';
+import { Action, Condition, ConditionType, ParsedStep } from '@/models/steps';
+import { UIEventCondition } from '@/models/steps';
 
 type DependencyMap = {
   uiEvent: Map<UIEventCondition, ParsedStep[]>;

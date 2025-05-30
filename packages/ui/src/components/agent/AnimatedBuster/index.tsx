@@ -1,4 +1,5 @@
 'use client';
+
 import hoverAnimation from '@/assets/animation/hover.json';
 import idleAnimation from '@/assets/animation/idling.json';
 import writingAnimation from '@/assets/animation/writing.json';

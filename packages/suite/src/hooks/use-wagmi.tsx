@@ -1,4 +1,5 @@
 'use client';
+
 import { useSuite } from '@/hooks/use-suite';
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import {
@@ -10,7 +11,7 @@ import {
   walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
 import { useMemo } from 'react';
-import { http, createConfig } from 'wagmi';
+import { createConfig, http } from 'wagmi';
 import { base, baseSepolia, mainnet, sepolia } from 'wagmi/chains';
 
 export const useWagmiConfig = () => {

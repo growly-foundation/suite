@@ -1,4 +1,4 @@
-// prettier.config.js or .prettierrc.js
+// @type {import('prettier').Config}
 module.exports = {
   arrowParens: 'avoid',
   bracketSameLine: true,
@@ -17,4 +17,11 @@ module.exports = {
   trailingComma: 'es5',
   useTabs: false,
   vueIndentScriptAndStyle: false,
+
+  // Import sorting configuration
+  importOrder: ['^@getgrowly/(.*)$', '^[./]', '^[../]'],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
+  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-packagejson'],
 };

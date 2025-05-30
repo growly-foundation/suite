@@ -304,7 +304,7 @@
     --gas-line-heavy: theme(colors.zinc.500);
     --gas-line-inverse: theme(colors.zinc.700);
   }
-  :root {
+  .growly-suite {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;

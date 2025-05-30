@@ -1,23 +1,27 @@
+import { ThemeConfig, ThemeName } from '@/types/theme';
 import { OnchainKitProviderReact } from '@coinbase/onchainkit';
-import { AgentId } from '@growly/core';
+
+import { AgentId } from '@getgrowly/core';
 
 /**
  * Configuration for the Growly Suite.
  */
 export interface SuiteConfig {
   /**
-   * Widget theme configuration.
+   * Theme configuration
    */
-  theme?: Partial<{
-    primary: string;
-    secondary: string;
-    background: string;
-    backgroundForeground: string;
-    headerBackground: string;
-    headerText: string;
-    text: string;
-    textForeground: string;
-  }>;
+  theme?: ThemeConfig;
+
+  /**
+   * Theme mode: 'light', 'dark', or 'system' (follows user preference)
+   */
+  themeMode?: ThemeName;
+
+  /**
+   * Brand name to display in the app
+   */
+  brandName?: string;
+
   /**
    * Display mode for the widget.
    */

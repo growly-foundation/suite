@@ -1,13 +1,14 @@
 'use client';
 
-import React from 'react';
-import { useSuite } from '@/hooks/use-suite';
-import { Avatar, Identity, Name, Badge, Address } from '@coinbase/onchainkit/identity';
-import { ChatMessageView } from './ChatMessageView';
-import { ChatInput } from './ChatInput';
-import { ConnectWallet } from './ConnectWallet';
 import { PanelLayout } from '@/components/panel/components/PanelLayout';
 import { useChatActions } from '@/hooks/use-chat-actions';
+import { useSuite } from '@/hooks/use-suite';
+import { Address, Avatar, Badge, Identity, Name } from '@coinbase/onchainkit/identity';
+import React from 'react';
+
+import { ChatInput } from './ChatInput';
+import { ChatMessageView } from './ChatMessageView';
+import { ConnectWallet } from './ConnectWallet';
 
 export function ChatPanel() {
   const {

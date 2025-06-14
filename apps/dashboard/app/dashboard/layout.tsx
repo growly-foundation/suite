@@ -1,14 +1,24 @@
 'use client';
 
 import ProtectedAuthProvider from '@/components/providers/protected-auth-provider';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+import { Separator } from '@/components/ui/separator';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { useBreadcrumbLoad } from '@/hooks/use-breadcrumb';
 import { cn } from '@/lib/utils';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import type React from 'react';
-import { Suspense, useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { Suspense } from 'react';
 
-import Navbar, { navigations } from './navbar';
+import { SuiteLogo } from '@getgrowly/ui';
+
+import { AppSidebar } from './siderbar';
 
 const AnimatedLoading = dynamic(
   () =>
@@ -29,51 +39,43 @@ export const PaddingLayout = ({
 };
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIfMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    checkIfMobile();
-    window.addEventListener('resize', checkIfMobile);
-
-    return () => {
-      window.removeEventListener('resize', checkIfMobile);
-    };
-  }, []);
-
+  const { breadcrumbs } = useBreadcrumbLoad();
+  const router = useRouter();
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Navbar />
-      <div className="flex flex-1">
-        {/* Main Content */}
-        <main className="flex-1 overflow-auto bg-white">
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset className="max-h-screen overflow-hidden">
+        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
+          <div className="flex items-center gap-2 px-4">
+            <Link href="/dashboard" className="font-bold text-lg flex items-center">
+              <SuiteLogo width={35} height={35} />
+            </Link>
+            <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
+            <Breadcrumb>
+              <BreadcrumbList>
+                {breadcrumbs.map((breadcrumb, index) => (
+                  <React.Fragment key={index}>
+                    <BreadcrumbItem
+                      key={index}
+                      className={cn(index === breadcrumbs.length - 1 && 'font-bold')}
+                      onClick={() => {
+                        router.push(breadcrumb.href);
+                      }}>
+                      {breadcrumb.title}
+                    </BreadcrumbItem>
+                    {index < breadcrumbs.length - 1 && index > 0 && <BreadcrumbSeparator />}
+                  </React.Fragment>
+                ))}
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
+        </header>
+        <div className="h-full overflow-auto">
           <Suspense fallback={<AnimatedLoading />}>
             <ProtectedAuthProvider>{children}</ProtectedAuthProvider>
           </Suspense>
-        </main>
-      </div>
-
-      {/* Bottom Navigation (Mobile) */}
-      {isMobile && (
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center p-2 z-50">
-          {navigations.map(item => {
-            const isActive = pathname === item.url || pathname.includes(`${item.url}`);
-            return (
-              <Link
-                key={item.url}
-                href={item.url}
-                className={cn('growly-mobile-nav-item', isActive && 'active')}>
-                <item.icon className="h-6 w-6" />
-                <span>{item.title}</span>
-              </Link>
-            );
-          })}
-        </nav>
-      )}
-    </div>
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

@@ -1,12 +1,20 @@
-import { UserButton } from '@/components/auth/user-button';
+'use client';
+
+import { NavMain } from '@/components/navigations/nav-main';
+import { NavUser } from '@/components/navigations/nav-user';
 import { OrganizationSwitcher } from '@/components/organizations/organization-switcher';
 import { IconContainer } from '@/components/ui/icon-container';
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarRail,
+} from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 import { BotIcon, FileStackIcon, HomeIcon, UserIcon, WorkflowIcon } from 'lucide-react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-import { SuiteLogo } from '@getgrowly/ui';
+import * as React from 'react';
 
 const NavigationIcon = ({ icon, selected }: { icon: React.ReactNode; selected: boolean }) => {
   return (
@@ -54,35 +62,29 @@ export const navigations = [
     ),
   },
 ];
-
-export default function Navbar() {
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-50 border-b p-4 md:px-6 bg-white">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="font-bold text-lg flex items-center">
-            <SuiteLogo width={35} height={35} />
-          </Link>
-          <OrganizationSwitcher />
-          <div className="flex gap-3">
-            {navigations.map((item, index) => {
-              const isActive =
-                index === 0 ? pathname === item.url : pathname.includes(`${item.url}`);
-              return (
-                <Link
-                  key={item.url}
-                  href={item.url}
-                  className={cn('growly-nav-item', isActive && 'active')}>
-                  {item.icon(isActive)}
-                  <span>{item.title}</span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-        <UserButton />
-      </div>
-    </header>
+    <Sidebar variant="inset" collapsible="none" className="h-screen border-r pt-2" {...props}>
+      <SidebarHeader>
+        <OrganizationSwitcher />
+      </SidebarHeader>
+      <SidebarContent>
+        <NavMain
+          items={navigations.map((item, index) => {
+            const isActive = index === 0 ? pathname === item.url : pathname.includes(`${item.url}`);
+            return {
+              ...item,
+              icon: item.icon(isActive),
+              isActive,
+            };
+          })}
+        />
+      </SidebarContent>
+      <SidebarFooter>
+        <NavUser />
+      </SidebarFooter>
+      <SidebarRail />
+    </Sidebar>
   );
 }

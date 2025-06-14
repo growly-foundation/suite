@@ -28,7 +28,7 @@ export function OrganizationSwitcher() {
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[300px] justify-between">
+          className="w-full max-w-[300px] justify-between">
           <div className="flex items-center gap-2 truncate">
             <div className="flex h-5 w-5 items-center justify-center rounded-md bg-primary/10">
               <span className="text-xs font-bold text-primary">
@@ -40,7 +40,7 @@ export function OrganizationSwitcher() {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[300px] p-0">
+      <PopoverContent className="w-full max-w-[300px] p-0">
         <Command>
           <CommandInput placeholder="Search organization..." />
           <CommandList>

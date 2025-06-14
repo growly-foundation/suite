@@ -6,6 +6,9 @@ import { Bell, FileQuestion, LifeBuoy, MessageCircle } from 'lucide-react';
 
 import { PanelBanner } from '../panel/components/PanelBanner';
 import { QuickActionButton } from '../panel/components/PanelQuickActionButton';
+import { ArrowLeftRight, Bell, FileQuestion, LifeBuoy, MessageCircle } from 'lucide-react';
+import { useChatActions } from '@/hooks/use-chat-actions';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export function HomePanel() {
   const { sendUserMessage } = useChatActions();
@@ -19,6 +22,10 @@ export function HomePanel() {
 
       {/* Quick Actions */}
       <div className="p-4">
+        <div className="flex justify-center">
+          <ConnectButton />
+        </div>
+        <br />
         <h4 className="text-sm font-medium text-gray-500 mb-3">COMMON QUESTIONS</h4>
         <div className="space-y-2">
           <QuickActionButton
@@ -52,6 +59,16 @@ export function HomePanel() {
             }}
           />
           <QuickActionButton
+            icon={<ArrowLeftRight size={22} />}
+            title={'Rebalance my portfolio'}
+            color="bg-pink-50"
+            iconColor="text-pink-500"
+            onClick={async () => {
+              setScreen(Screen.Chat);
+              await sendUserMessage('Can you help me to suggest a rebalance for my portfolio?');
+            }}
+          />
+          <QuickActionButton
             icon={<MessageCircle size={22} />}
             title="Start a conversation"
             color="bg-emerald-50"
@@ -59,6 +76,13 @@ export function HomePanel() {
             onClick={() => setScreen(Screen.Chat)}
           />
         </div>
+        <br />
+        <p className="text-center text-xs text-gray-500">
+          Powered by{' '}
+          <a href="https://getgrowly.app" className="underline">
+            Growly Suite
+          </a>
+        </p>
       </div>
     </div>
   );

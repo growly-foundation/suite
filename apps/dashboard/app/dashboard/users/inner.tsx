@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatedLoadingSmall } from '@/components/animated-components/animated-loading-small';
-import { UsersTable } from '@/components/app-users/app-users-table';
+import { EnhancedUsersTable } from '@/components/app-users/enhanced-users-table';
 import { PrimaryButton } from '@/components/buttons/primary-button';
 import { SearchInput } from '@/components/inputs/search-input';
 import { generateMockUsers } from '@/constants/mockUsers';
@@ -27,21 +27,23 @@ export function UserDirectoryLayout({ users, loading }: { users: ParsedUser[]; l
       {loading ? (
         <AnimatedLoadingSmall />
       ) : (
-        <React.Fragment>
-          <div className="flex items-center justify-between border-b p-2 px-4">
-            <span className="text-sm text-muted-foreground">There are {_users.length} users</span>
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between border-b border-slate-200 p-2 px-4">
+            <span className="text-sm text-muted-foreground">
+              {_users.length} {_users.length === 1 ? 'user' : 'users'} available
+            </span>
             <div className="flex items-center gap-2">
               <SearchInput
                 className="p-2"
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
-                placeholder="Search ENS or address"
+                placeholder="Quick search by ENS or address..."
               />
               <PrimaryButton onClick={() => setViewDemo(true)}>View demo</PrimaryButton>
             </div>
           </div>
-          <UsersTable users={_users} />
-        </React.Fragment>
+          <EnhancedUsersTable users={_users} />
+        </div>
       )}
     </React.Fragment>
   );
